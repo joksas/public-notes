@@ -1,0 +1,77 @@
+---
+title: "Tensors"
+header-includes:
+   - \usepackage{amssymb}
+output:
+    pdf_document
+---
+
+# Space $\mathbb{R}^n$ and Its Topology
+
+**Distance function** between two points $\boldsymbol{x} = (x_1, \dots, x_n)$ and $\boldsymbol{y} = (y_1, \dots, y_n)$ is:
+\begin{equation}
+  d(\boldsymbol{x}, \boldsymbol{y}) = \left[ \sum\limits_{i=1}^n (x_i - y_i)^2 \right]^{1/2}
+\end{equation}
+
+**Neighbourhood** of radius $r$ of the point $\boldsymbol{x}$ in $\mathbb{R}^n$ is the set of points $N_r(\boldsymbol{x})$ whose distance from $\boldsymbol{x}$ is *less* than $r$.
+
+A set of points $\boldsymbol{S}$ is **open** if every point $\boldsymbol{x}$ in $\boldsymbol{S}$ has a neighbourhood entirely contained in $\boldsymbol{S}$. 
+
+**Open ball** of radius $r$ centred at $\boldsymbol{x}$ is the collection of all the points of distance less than $r$ from $\boldsymbol{x}$, i.e.:
+\begin{equation}
+  B_r(\boldsymbol{x}) = \left\{\boldsymbol{y}: d(\boldsymbol{x}, \boldsymbol{y}) < r \right\}
+\end{equation}
+
+**Closed ball** of radius $r$ centred at $\boldsymbol{x}$ is the collection of all the points of distance less than or equal to $r$ from $\boldsymbol{x}$, i.e.:
+\begin{equation}
+  B_r(\boldsymbol{x}) = \left\{\boldsymbol{y}: d(\boldsymbol{x}, \boldsymbol{y}) \leq r \right\}
+\end{equation}
+
+**Hausdorff space** is a topological space where for any two points there exist neighbourhoods of each which are disjoint from each other.
+
+For spaces, such as $\mathbb{R}^n$, the exact definition of distance function is not important when discussing its topology. For example, we can use many different definitions of a distance function to define neighbourhoods. We only need the notion that the distance between two distinct points can be made arbitrarily small but that it would not become zero. When topology of a space is not strictly dependent on definition of distance function, we usually call it **natural topology**.
+
+## Proof: open ball is an open set
+
+Suppose that $B_r(\boldsymbol{x})$ is an open ball.
+
+For any $\boldsymbol{y} \in B_r(\boldsymbol{x})$, let $r_1 = r - d(\boldsymbol{x}, \boldsymbol{y})$.
+
+\begin{equation} \label{eq:ball_radius}
+\Rightarrow r_1 + d(\boldsymbol{x}, \boldsymbol{y}) = r
+\end{equation}
+
+Suppose that $\boldsymbol{z} \in B_{r_1}(\boldsymbol{y})$. Then by triangle inequality:
+
+\begin{equation} \label{eq:triangle_inequality}
+  d(\boldsymbol{x}, \boldsymbol{z}) \leq d(\boldsymbol{x}, \boldsymbol{y}) + d(\boldsymbol{y}, \boldsymbol{z})
+\end{equation}
+
+Because $\boldsymbol{z} \in B_{r_1}(\boldsymbol{y})$:
+
+\begin{equation}
+  d(\boldsymbol{y}, \boldsymbol{z}) < r_1
+\end{equation}
+
+Then:
+
+\begin{equation}
+  d(\boldsymbol{y}, \boldsymbol{z}) + d(\boldsymbol{y}, \boldsymbol{z}) < r_1 + d(\boldsymbol{y}, \boldsymbol{z}) 
+\end{equation}
+
+Using equation \ref{eq:ball_radius}: 
+\begin{equation}
+  d(\boldsymbol{y}, \boldsymbol{z}) + d(\boldsymbol{y}, \boldsymbol{z}) < r
+\end{equation}
+
+Combining with equation \ref{eq:triangle_inequality}:
+\begin{equation}
+  d(\boldsymbol{x}, \boldsymbol{z}) \leq d(\boldsymbol{x}, \boldsymbol{y}) + d(\boldsymbol{y}, \boldsymbol{z}) < r
+\end{equation}
+
+Thus:
+\begin{equation}
+  d(\boldsymbol{x}, \boldsymbol{z}) < r
+\end{equation}
+
+Thus $B_r(\boldsymbol{x})$ is an open set. 
