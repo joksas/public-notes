@@ -1,30 +1,51 @@
 ---
 title: "Tensors"
-header-includes:
-   - \usepackage{amssymb}
-output:
-    pdf_document
 ---
 
-# Space $\mathbb{R}^n$ and Its Topology
+# What is a Tensor?
 
-**Distance function** between two points $\boldsymbol{x} = (x_1, \dots, x_n)$ and $\boldsymbol{y} = (y_1, \dots, y_n)$ is:
+## Elementary vector spaces
+
+Vector space is a set of vectors. However, it is important to talk about specific requirements that this mathematical set has to satisfy. 
+
+Properties of vector space $\mathcal{W}$:
+
+1. **Vector addition**. One should be able to add vectors, but only those that are in the vector space. If $\matr{w}, \matr{s} \in \mathcal{W}$, then $\matr{w} + \matr{s} = \matr{t} \in \mathcal{W}$.
+2. **Scalar multiplication**. If $a \in \mathbb{R}$ and $\matr{w} \in \mathcal{W}$, then $a\matr{w} \in \mathcal{W}$. Vector spaces can be either real or complex, depending on what type of vector $a$ is.
+3. **Linearity**:
+   * $a\matr{w} + b\matr{v} = \matr{z}$
+   * $a\matr{w} + a\matr{t} = a(\matr{w} + \matr{t})$
+4. **Additive inverses**. If $\matr{w} \in \mathcal{W}$, then there exists another vector $-\matr{w} \in \mathcal{W}$, so that $\matr{w} + (-\matr{w}) = \matr{0}$.
+
+Suppose we have $\matr{w}, \matr{q} \in \mathcal{V}$ and $\matr{r}, \matr{s} \in \mathcal{W}$. We can add $\matr{w}$ and $\matr{q}$ together or $\matr{r}$ and $\matr{s}$ together but not $\matr{w}$ and $\matr{r}$ together. Addition represents different operations for different vector spaces. Or at least there is no definition of how to add vectors that are not part of a particular vector space.
+
+It is often not possible to distinguish between two vector spaces. But one property that often helps to distinguish them is their dimension. If $n$ is the *minimum* number of vectors that can be used to distinguish *any* vector in vector space $\mathcal{V}$ as their linear combination, then the dimension of $\mathcal{V}$ is $n$, i.e. $\dim{\mathcal{V}} = n$. These $n$ vectors are usually referred to as **basis vectors**. Basis vectors are not unique because if $\matr{v}$ is a basis vector, then so is $a\matr{v}$.
+
+If two vector spaces $\mathcal{V}$ and $\mathcal{W}$ are real vector spaces and both have dimension $n$, then the difference between them is superficial---only their names are different. We call such vector spaces **isomorphic**. More precisely, two vector spaces are isomorphic if there is a one-to-one correspondence between them and if operations in one vector space are in correspondence to operations in another vector space.
+
+In elementary vector spaces, concepts, such as dot product of vectors, cross product of vectors or magnitude of vectors, do not exist. These properties are advanced and have to be added to elementary vector spaces.
+
+# Geometrical Methods of Mathematical Physics
+
+## Space $\mathbb{R}^n$ and its topology
+
+**Distance function** between two points $\matr{x} = (x_1, \dots, x_n)$ and $\matr{y} = (y_1, \dots, y_n)$ is:
 \begin{equation}
-  d(\boldsymbol{x}, \boldsymbol{y}) = \left[ \sum\limits_{i=1}^n (x_i - y_i)^2 \right]^{1/2}
+  d(\matr{x}, \matr{y}) = \left[ \sum\limits_{i=1}^n (x_i - y_i)^2 \right]^{1/2}
 \end{equation}
 
-**Neighbourhood** of radius $r$ of the point $\boldsymbol{x}$ in $\mathbb{R}^n$ is the set of points $N_r(\boldsymbol{x})$ whose distance from $\boldsymbol{x}$ is *less* than $r$.
+**Neighbourhood** of radius $r$ of the point $\matr{x}$ in $\mathbb{R}^n$ is the set of points $N_r(\matr{x})$ whose distance from $\matr{x}$ is *less* than $r$.
 
-A set of points $\boldsymbol{S}$ is **open** if every point $\boldsymbol{x}$ in $\boldsymbol{S}$ has a neighbourhood entirely contained in $\boldsymbol{S}$. 
+A set of points $\matr{S}$ is **open** if every point $\matr{x}$ in $\matr{S}$ has a neighbourhood entirely contained in $\matr{S}$. 
 
-**Open ball** of radius $r$ centred at $\boldsymbol{x}$ is the collection of all the points of distance less than $r$ from $\boldsymbol{x}$, i.e.:
+**Open ball** of radius $r$ centred at $\matr{x}$ is the collection of all the points of distance less than $r$ from $\matr{x}$, i.e.:
 \begin{equation}
-  B_r(\boldsymbol{x}) = \left\{\boldsymbol{y}: d(\boldsymbol{x}, \boldsymbol{y}) < r \right\}
+  B_r(\matr{x}) = \left\{\matr{y}: d(\matr{x}, \matr{y}) < r \right\}
 \end{equation}
 
-**Closed ball** of radius $r$ centred at $\boldsymbol{x}$ is the collection of all the points of distance less than or equal to $r$ from $\boldsymbol{x}$, i.e.:
+**Closed ball** of radius $r$ centred at $\matr{x}$ is the collection of all the points of distance less than or equal to $r$ from $\matr{x}$, i.e.:
 \begin{equation}
-  B_r(\boldsymbol{x}) = \left\{\boldsymbol{y}: d(\boldsymbol{x}, \boldsymbol{y}) \leq r \right\}
+  B_r(\matr{x}) = \left\{\matr{y}: d(\matr{x}, \matr{y}) \leq r \right\}
 \end{equation}
 
 **Hausdorff space** is a topological space where for any two points there exist neighbourhoods of each which are disjoint from each other.
@@ -33,45 +54,45 @@ For spaces, such as $\mathbb{R}^n$, the exact definition of distance function is
 
 ## Proof: open ball is an open set
 
-Suppose that $B_r(\boldsymbol{x})$ is an open ball.
+Suppose that $B_r(\matr{x})$ is an open ball.
 
-For any $\boldsymbol{y} \in B_r(\boldsymbol{x})$, let $r_1 = r - d(\boldsymbol{x}, \boldsymbol{y})$.
+For any $\matr{y} \in B_r(\matr{x})$, let $r_1 = r - d(\matr{x}, \matr{y})$.
 
 \begin{equation} \label{eq:ball_radius}
-\Rightarrow r_1 + d(\boldsymbol{x}, \boldsymbol{y}) = r
+\Rightarrow r_1 + d(\matr{x}, \matr{y}) = r
 \end{equation}
 
-Suppose that $\boldsymbol{z} \in B_{r_1}(\boldsymbol{y})$. Then by triangle inequality:
+Suppose that $\matr{z} \in B_{r_1}(\matr{y})$. Then by triangle inequality:
 
 \begin{equation} \label{eq:triangle_inequality}
-  d(\boldsymbol{x}, \boldsymbol{z}) \leq d(\boldsymbol{x}, \boldsymbol{y}) + d(\boldsymbol{y}, \boldsymbol{z})
+  d(\matr{x}, \matr{z}) \leq d(\matr{x}, \matr{y}) + d(\matr{y}, \matr{z})
 \end{equation}
 
-Because $\boldsymbol{z} \in B_{r_1}(\boldsymbol{y})$:
+Because $\matr{z} \in B_{r_1}(\matr{y})$:
 
 \begin{equation}
-  d(\boldsymbol{y}, \boldsymbol{z}) < r_1
+  d(\matr{y}, \matr{z}) < r_1
 \end{equation}
 
 Then:
 
 \begin{equation}
-  d(\boldsymbol{y}, \boldsymbol{z}) + d(\boldsymbol{y}, \boldsymbol{z}) < r_1 + d(\boldsymbol{y}, \boldsymbol{z}) 
+  d(\matr{y}, \matr{z}) + d(\matr{y}, \matr{z}) < r_1 + d(\matr{y}, \matr{z}) 
 \end{equation}
 
 Using equation \ref{eq:ball_radius}: 
 \begin{equation}
-  d(\boldsymbol{y}, \boldsymbol{z}) + d(\boldsymbol{y}, \boldsymbol{z}) < r
+  d(\matr{y}, \matr{z}) + d(\matr{y}, \matr{z}) < r
 \end{equation}
 
 Combining with equation \ref{eq:triangle_inequality}:
 \begin{equation}
-  d(\boldsymbol{x}, \boldsymbol{z}) \leq d(\boldsymbol{x}, \boldsymbol{y}) + d(\boldsymbol{y}, \boldsymbol{z}) < r
+  d(\matr{x}, \matr{z}) \leq d(\matr{x}, \matr{y}) + d(\matr{y}, \matr{z}) < r
 \end{equation}
 
 Thus:
 \begin{equation}
-  d(\boldsymbol{x}, \boldsymbol{z}) < r
+  d(\matr{x}, \matr{z}) < r
 \end{equation}
 
-Thus $B_r(\boldsymbol{x})$ is an open set. 
+Thus $B_r(\matr{x})$ is an open set. 
