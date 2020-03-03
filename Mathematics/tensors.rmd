@@ -84,6 +84,27 @@ Once we know the mappings for individual basis vectors of $\mathcal{V}$, we know
 \end{split}
 \end{align}
 
+## Dual spaces
+
+Suppose we have real vector space $\mathcal{V}$ with $\dim{\mathcal{V}} = 4$ and basis $e_\mu$. Suppose also that we have have a real vector space $\mathcal{W}$ with basis $f_\nu$ and which could have any number of dimensions.
+
+Could we have maps from $\mathcal{V}$ without defining another vector space that we would mapping to? If we do not have another vector space defined, we could only map the vector space $\mathcal{V}$ to itself or to $\mathbb{R}$. One can think of $\mathbb{R}$ as a vector space of dimension 1 and basis $e$ (not the Euler's number!). Mappings from $\mathcal{V}$ to $\mathbb{R}$ are important because we are not adding anything to our universe---$\mathbb{R}$ was used to define $\mathcal{V}$ in the first place.
+
+But can we also avoid creating an arbitrary map from $\mathcal{V}$ to $\mathbb{R}$? Instead of considering *a* map, we could consider the set of *all* possible maps. That set of all possible maps is called the **dual space**. For vector space $\mathcal{V}$, its dual space is called $\mathcal{V}^*$ ("v-star").
+
+We will now try to prove that dual space is a vector space. For this we need the following *definitions* (suppose that $\matr{v}$ is a vector in vector space $\mathcal{V}$, while $\Lambda$ and $\mathrm{Z}$ are maps in its dual space $\mathcal{V}^*$):
+\begin{align}
+  \inner{\Lambda + \mathrm{Z}}{\matr{v}} &= \inner{\Lambda}{\matr{v}} + \inner{\mathrm{Z}}{\matr{v}} \\
+  \inner{a \Lambda}{\matr{v}} &= a \inner{\Lambda}{\matr{v}} 
+\end{align}
+
+If we also say that scalar multiplication by $-1$ gives an opposite map, we now have satisfied all the requirements for $\mathcal{V}^*$ to be a vector space. This shows that we cannot create a *single* vector space. Whenever we create $\mathcal{V}$, we automatically also create $\mathcal{V}^*$. We will use subscripts to denote the basis of "normal" vector space and a superscript to denote the basis of its dual space.
+
+How do we choose the basis of the dual space though? It is arbitrary! However, we can define a convenient rule that the bases should have to satisfy:
+\begin{equation}
+  \inner{e^\mu}{e_\nu} = \delta_\nu^\mu
+\end{equation}
+
 # Geometrical Methods of Mathematical Physics
 
 ## Space $\mathbb{R}^n$ and its topology
