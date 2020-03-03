@@ -25,6 +25,65 @@ If two vector spaces $\mathcal{V}$ and $\mathcal{W}$ are real vector spaces and 
 
 In elementary vector spaces, concepts, such as dot product of vectors, cross product of vectors or magnitude of vectors, do not exist. These properties are advanced and have to be added to elementary vector spaces.
 
+## How to make a map
+
+Suppose we have a real vector space $\mathcal{V}$ with $\dim{\mathcal{V}} = 4$. Suppose also that we can have basis vectors $\matr{w}, \matr{v}, \matr{p}, \matr{q}$. We may refer to this basis as $\matr{e}_\mu$ and its 4 vectors as $\matr{e}_0, \matr{e}_1, \matr{e}_2, \matr{e}_3$. In this notation, we decided to put an index of each basis vector in the subscript. *That is a very important choice that will be extremely consequential later*.
+
+A vector $\matr{A} \in \mathcal{V}$ can be expressed as $a\matr{e}_0 + b\matr{e}_1 + c\matr{e}_2 + d\matr{e}_3$. To avoid using new variable for each component (real number), we can introduce the following (note the absence of boldface):
+\begin{align}
+\begin{split}
+  \matr{A} &= A^0 e_0 + A^1 e_1 + A^2 e_2 + A^3 e_3 \\
+           &= A^\mu e_\mu \quad \text{this is referred to as \textbf{Einstein summation convention}}
+\end{split}
+\end{align}
+
+Suppose we have real vectors spaces $\mathcal{V}$ and $\mathcal{W}$. $\dim{\mathcal{V}} = 4$ and $\dim{\mathcal{W}} = 10$, while the basis of $\mathcal{V}$ is $e_\mu$ and the basis of $\mathcal{W}$ is $f_\mu$. Can we make a map $\Lambda$ that maps any vector in $\mathcal{V}$ to a vector in $\mathcal{W}$?
+
+Such a map would mathematically be written in the following way:
+\begin{equation}
+  \Lambda: \mathcal{V} \to \mathcal {W}
+\end{equation}
+we would say "$\Lambda$ maps from the domain $\mathcal{V}$ to the range $\mathcal{W}$".
+
+We can then talk of $\Lambda$ acting on a specific vector $\matr{v}$ in $\mathcal{V}$ and giving us vector $\matr{w}$ in $\mathcal{W}$ in either of the following ways:
+\begin{align}
+\begin{split}
+  \Lambda \matr{v} &\to \matr{w} \\
+  &\text{or} \\
+  \Lambda(\matr{v}) &\to \matr{w} \\
+\end{split}
+\end{align}
+
+However, we will usually use the following ("bracket") notation:
+\begin{equation}
+  \inner{\Lambda}{\matr{v}} \to \matr{w}
+\end{equation}
+
+All we need to do is to define *linear* mappings for basis $e_\mu$:
+\begin{align*}
+\begin{split}
+  \inner{\Lambda}{e_0} &= 3f_1 + 2f_4 + f_{10} \\
+  \inner{\Lambda}{e_1} &= \pi f_3 + f_0 \\
+  \inner{\Lambda}{e_2} &= f_2 \\
+  \inner{\Lambda}{e_3} &= f_3 + f_5 +f_7 + f_9
+\end{split}
+\end{align*}
+
+**Linear mappings** have two properties (suppose that $\matr{u}, \matr{v} \in \mathcal{V}$ and that $\Lambda: \mathcal{V} \to \mathcal{W}$):
+\begin{align}
+  \inner{\Lambda}{\matr{u} + \matr{v}} &= \inner{\Lambda}{\matr{u}} + \inner{\Lambda}{\matr{v}} &\text{(additivity)} \\
+  \inner{\Lambda}{q \matr{u}} &= q \inner{\Lambda}{\matr{u}} \quad &\text{(homogeneity)}
+\end{align}
+all the terms on the RHS in the two above equations are vectors in $\mathcal{W}$.
+
+Once we know the mappings for individual basis vectors of $\mathcal{V}$, we know the mappings for any vector in $\mathcal{V}$. That is because vector $\matr{A}$ in $\mathcal{V}$ is equal to $A^\mu e_\mu$ and so:
+\begin{align}
+\begin{split}
+  \inner{\Lambda}{\matr{A}} &= \inner{\Lambda}{A^\mu e_\mu} \\
+  &= A^\mu \inner{\Lambda}{e_\mu}
+\end{split}
+\end{align}
+
 # Geometrical Methods of Mathematical Physics
 
 ## Space $\mathbb{R}^n$ and its topology
@@ -52,7 +111,7 @@ A set of points $\matr{S}$ is **open** if every point $\matr{x}$ in $\matr{S}$ h
 
 For spaces, such as $\mathbb{R}^n$, the exact definition of distance function is not important when discussing its topology. For example, we can use many different definitions of a distance function to define neighbourhoods. We only need the notion that the distance between two distinct points can be made arbitrarily small but that it would not become zero. When topology of a space is not strictly dependent on definition of distance function, we usually call it **natural topology**.
 
-## Proof: open ball is an open set
+### Proof: open ball is an open set
 
 Suppose that $B_r(\matr{x})$ is an open ball.
 
