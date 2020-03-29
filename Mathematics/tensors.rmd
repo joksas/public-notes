@@ -88,7 +88,7 @@ Once we know the mappings for individual basis vectors of $\mathcal{V}$, we know
 
 Suppose we have real vector space $\mathcal{V}$ with $\dim{\mathcal{V}} = 4$ and basis $e_\mu$. Suppose also that we have have a real vector space $\mathcal{W}$ with basis $f_\nu$ and which could have any number of dimensions.
 
-Could we have maps from $\mathcal{V}$ without defining another vector space that we would mapping to? If we do not have another vector space defined, we could only map the vector space $\mathcal{V}$ to itself or to $\mathbb{R}$. One can think of $\mathbb{R}$ as a vector space of dimension 1 and basis $e$ (not the Euler's number!). Mappings from $\mathcal{V}$ to $\mathbb{R}$ are important because we are not adding anything to our universe---$\mathbb{R}$ was used to define $\mathcal{V}$ in the first place.
+Could we have maps from $\mathcal{V}$ without defining another vector space that we would be mapping to? If we do not have another vector space defined, we could only map the vector space $\mathcal{V}$ to itself or to $\mathbb{R}$. One can think of $\mathbb{R}$ as a vector space of dimension 1 and basis $e$ (not the Euler's number!). Mappings from $\mathcal{V}$ to $\mathbb{R}$ are important because we are not adding anything to our universe---$\mathbb{R}$ was used to define $\mathcal{V}$ in the first place.
 
 But can we also avoid creating an arbitrary map from $\mathcal{V}$ to $\mathbb{R}$? Instead of considering *a* map, we could consider the set of *all* possible maps. That set of all possible maps is called the **dual space**. For vector space $\mathcal{V}$, its dual space is called $\mathcal{V}^*$ ("v-star").
 
@@ -104,6 +104,29 @@ How do we choose the basis of the dual space though? It is arbitrary! However, w
 \begin{equation}
   \inner{e^\mu}{e_\nu} = \delta_\nu^\mu
 \end{equation}
+
+# Cartesian products
+
+Dual space, $\mathcal{V}^{**}$, of $\mathcal{V}^*$ is simply $\mathcal{V}$.
+
+Arbitrary map in a vector space can be expressed as $A^\mu e_\mu$, while an arbitrary map in its dual space can be expressed as $\beta_\mu e^\mu$. The former can be called a vector, and the latter---a covector.
+
+Suppose we have arbitrary mapping:
+\begin{align}
+  \inner{\beta_\mu e^\mu}{A^\nu e_\nu} &= \\
+  \beta_\mu A^\nu \inner{e^\mu}{e_\nu} &= \\
+  \beta_\mu A^\nu \delta_\nu^\mu &= \beta_\mu A^\mu
+\end{align}
+
+Although this is similar to dot product, it is not a dot product. Traditionally, dot product is defined for two vectors from the *same* vector space, while here the vectors are from different vector spaces (vector space and its dual space).
+
+**Cartesian product** is a binary operation that takes as an input two sets and  returns another set as its output. If we have two sets $A$ and $B$, their Cartesian product $A \times B$ returns all ordered pairs of the elements from the two sets:
+
+\begin{equation}
+  A \times B = \{a, b, c, \dots \} \times \{\alpha, \beta, \gamma, \dots \} = \{ (a, \alpha), (a, \beta), \dots, (c, \beta), (c, \gamma), \dots \}
+\end{equation}
+
+These sets do not necessarily have to be vectors spaces, but vector spaces are sets and thus we can perform this operation on them. Cartesian products allow to define arbitrary binary operations. That is because binary operation that takes as an input $A$ and $B$ and outputs $C$ can be thought of as a mapping from $A \times B$ to $C$, i.e. we have to define the operation for every possible pair of elements from $A$ and $B$.
 
 # Geometrical Methods of Mathematical Physics
 
