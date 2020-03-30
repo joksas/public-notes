@@ -113,9 +113,11 @@ Arbitrary map in a vector space can be expressed as $A^\mu e_\mu$, while an arbi
 
 Suppose we have arbitrary mapping:
 \begin{align}
+\begin{split}
   \inner{\beta_\mu e^\mu}{A^\nu e_\nu} &= \\
   \beta_\mu A^\nu \inner{e^\mu}{e_\nu} &= \\
   \beta_\mu A^\nu \delta_\nu^\mu &= \beta_\mu A^\mu
+\end{split}
 \end{align}
 
 Although this is similar to dot product, it is not a dot product. Traditionally, dot product is defined for two vectors from the *same* vector space, while here the vectors are from different vector spaces (vector space and its dual space).
@@ -127,6 +129,43 @@ Although this is similar to dot product, it is not a dot product. Traditionally,
 \end{equation}
 
 These sets do not necessarily have to be vectors spaces, but vector spaces are sets and thus we can perform this operation on them. Cartesian products allow to define arbitrary binary operations. That is because binary operation that takes as an input $A$ and $B$ and outputs $C$ can be thought of as a mapping from $A \times B$ to $C$, i.e. we have to define the operation for every possible pair of elements from $A$ and $B$.
+
+## Tensor products
+
+We want to create a map that maps from $\mathcal{V} \times \mathcal{V}$ to $\mathbb{R}$. We will call this mapping a **tensor product**.
+
+Suppose that $v, w \in \mathcal{V}$ and $\alpha, \beta \in \mathcal{V}^*$. Then the tensor product, $\alpha \otimes \beta$, operating on the pair $(v, w)$ will be defined as:
+\begin{equation}
+  \left[ \alpha \otimes \beta \right] (v, w) = \inner{\alpha}{v} \inner{\beta}{w}
+\end{equation}
+
+One could name $\alpha \otimes \beta$ with some symbol, say $\Lambda$, because it is a mapping. However, that way it is easy to forget that it acts on two vectors, not just one.
+
+We can make all tensor products of two covectors by making the following *definition*: if $\alpha, \beta, \gamma, \delta \in \mathcal{V}^*$, $v, w \in \mathcal{V}$ and $a, b \in \mathbb{R}$, then
+\begin{align}
+\begin{split}
+  \left[ a \left( \alpha \otimes \beta \right) \right] \left[ b \left( \gamma \otimes \delta \right) \right] (v, w) &= \\
+  a \left[ \alpha \otimes \beta \right] (v, w) + b \left[ \gamma \otimes \delta \right] (v, w) &= a \inner{\alpha}{v} \inner{\beta}{w} + b \inner{\gamma}{v} \inner{\delta}{w} 
+\end{split}
+\end{align}
+
+If $\mathcal{V}$ has bases $e_\mu$ and $\mathcal{V}^*$ has bases $e^\nu$, then $\mathcal{V}^* \otimes \mathcal{V}^*$ has bases $e^\nu \otimes e^\xi: \left\{ e^0 \otimes e^0, e^0 \otimes e^1, \dots e^3 \otimes e^3 \right\}$ (if $\dim \mathcal{V}^* = 4$).
+
+Let us look at an example:
+\begin{align*}
+  \left[ e^1 \otimes e^2 \right] \left( A^\mu e_\mu, B^\nu e_\nu \right) &= \\
+  \inner{e^1}{A^\mu e_\mu} \inner{e^2}{B^\nu e_\nu} &= \\
+  A^\mu \inner{e^1}{e_\mu} B^\nu \inner{e^2}{e_\nu} &= \\
+  A^\mu \delta_\mu^1 B^\nu \delta _\nu^2 = A^1 B^2
+\end{align*}
+
+If an arbitrary vector in $\mathcal{V}$ can be written as $A^\mu e_\mu$ and arbitrary covector in $\mathcal{V}^*$ can be written as $B_\nu e^\nu$, how could we write an arbitrary tensor product of covectors? Now we have 16 bases and it might make sense to simply use two indices:
+\begin{align}
+\begin{split}
+  \alpha \otimes \gamma &\equiv T_{\mu \nu} e^\mu \otimes e^\nu \\
+  &= T_{00} e^0 \otimes e^0 + T_{01} e^0 \otimes e^1 + \dots + T_{33} e^3 \otimes e^3
+\end{split}
+\end{align}
 
 # Geometrical Methods of Mathematical Physics
 
