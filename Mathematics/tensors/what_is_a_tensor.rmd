@@ -1,10 +1,9 @@
 ---
-title: "Tensors"
+title: "What is a Tensor?
+"
 ---
 
-# What is a Tensor?
-
-## Elementary vector spaces
+# Elementary vector spaces
 
 Vector space is a set of vectors. However, it is important to talk about specific requirements that this mathematical set has to satisfy. 
 
@@ -25,7 +24,7 @@ If two vector spaces $\mathcal{V}$ and $\mathcal{W}$ are real vector spaces and 
 
 In elementary vector spaces, concepts, such as dot product of vectors, cross product of vectors or magnitude of vectors, do not exist. These properties are advanced and have to be added to elementary vector spaces.
 
-## How to make a map
+# How to make a map
 
 Suppose we have a real vector space $\mathcal{V}$ with $\dim{\mathcal{V}} = 4$. Suppose also that we can have basis vectors $\matr{w}, \matr{v}, \matr{p}, \matr{q}$. We may refer to this basis as $\matr{e}_\mu$ and its 4 vectors as $\matr{e}_0, \matr{e}_1, \matr{e}_2, \matr{e}_3$. In this notation, we decided to put an index of each basis vector in the subscript. *That is a very important choice that will be extremely consequential later*.
 
@@ -84,7 +83,7 @@ Once we know the mappings for individual basis vectors of $\mathcal{V}$, we know
 \end{split}
 \end{align}
 
-## Dual spaces
+# Dual spaces
 
 Suppose we have real vector space $\mathcal{V}$ with $\dim{\mathcal{V}} = 4$ and basis $e_\mu$. Suppose also that we have have a real vector space $\mathcal{W}$ with basis $f_\nu$ and which could have any number of dimensions.
 
@@ -130,18 +129,18 @@ Although this is similar to dot product, it is not a dot product. Traditionally,
 
 These sets do not necessarily have to be vectors spaces, but vector spaces are sets and thus we can perform this operation on them. Cartesian products allow to define arbitrary binary operations. That is because binary operation that takes as an input $A$ and $B$ and outputs $C$ can be thought of as a mapping from $A \times B$ to $C$, i.e. we have to define the operation for every possible pair of elements from $A$ and $B$.
 
-## Tensor products
+# Tensor products
 
 We want to create a map that maps from $\mathcal{V} \times \mathcal{V}$ to $\mathbb{R}$. We will call this mapping a **tensor product**.
 
 Suppose that $v, w \in \mathcal{V}$ and $\alpha, \beta \in \mathcal{V}^*$. Then the tensor product, $\alpha \otimes \beta$, operating on the pair $(v, w)$ will be defined as:
-\begin{equation}
+\begin{equation} \label{eq:covector_tensor_product_on_vector_cartesian_product}
   \left[ \alpha \otimes \beta \right] (v, w) = \inner{\alpha}{v} \inner{\beta}{w}
 \end{equation}
 
 One could name $\alpha \otimes \beta$ with some symbol, say $\Lambda$, because it is a mapping. However, that way it is easy to forget that it acts on two vectors, not just one.
 
-We can make all tensor products of two covectors by making the following *definition*: if $\alpha, \beta, \gamma, \delta \in \mathcal{V}^*$, $v, w \in \mathcal{V}$ and $a, b \in \mathbb{R}$, then
+We can make all tensor products of two covectors linear by making the following *definition*: if $\alpha, \beta, \gamma, \delta \in \mathcal{V}^*$, $v, w \in \mathcal{V}$ and $a, b \in \mathbb{R}$, then
 \begin{align}
 \begin{split}
   \left[ a \left( \alpha \otimes \beta \right) \right] \left[ b \left( \gamma \otimes \delta \right) \right] (v, w) &= \\
@@ -162,79 +161,53 @@ Let us look at an example:
 If an arbitrary vector in $\mathcal{V}$ can be written as $A^\mu e_\mu$ and arbitrary covector in $\mathcal{V}^*$ can be written as $B_\nu e^\nu$, how could we write an arbitrary tensor product of covectors? Now we have 16 bases and it might make sense to simply use two indices:
 \begin{align}
 \begin{split}
-  \alpha \otimes \gamma &\equiv T_{\mu \nu} e^\mu \otimes e^\nu \\
-  &= T_{00} e^0 \otimes e^0 + T_{01} e^0 \otimes e^1 + \dots + T_{33} e^3 \otimes e^3
+  \alpha \otimes \gamma &\equiv \tensor{T}{_{\mu \nu}} e^\mu \otimes e^\nu \\
+  &= \tensor{T}{_{00}} e^0 \otimes e^0 + \tensor{T}{_{01}} e^0 \otimes e^1 + \dots + \tensor{T}{_{33}} e^3 \otimes e^3
 \end{split}
 \end{align}
 
-# Geometrical Methods of Mathematical Physics
+# Tensor product spaces
 
-## Space $\mathbb{R}^n$ and its topology
-
-**Distance function** between two points $\matr{x} = (x_1, \dots, x_n)$ and $\matr{y} = (y_1, \dots, y_n)$ is:
+We saw that tensor product of dual spaces can act as map from Cartesian product of vector spaces to real numbers, i.e.:
 \begin{equation}
-  d(\matr{x}, \matr{y}) = \left[ \sum\limits_{i=1}^n (x_i - y_i)^2 \right]^{1/2}
+  \mathcal{V}^* \otimes \mathcal{V}^*: \mathcal{V} \times \mathcal{V} \to \mathbb{R}
 \end{equation}
-
-**Neighbourhood** of radius $r$ of the point $\matr{x}$ in $\mathbb{R}^n$ is the set of points $N_r(\matr{x})$ whose distance from $\matr{x}$ is *less* than $r$.
-
-A set of points $\matr{S}$ is **open** if every point $\matr{x}$ in $\matr{S}$ has a neighbourhood entirely contained in $\matr{S}$. 
-
-**Open ball** of radius $r$ centred at $\matr{x}$ is the collection of all the points of distance less than $r$ from $\matr{x}$, i.e.:
+with an arbitrary member of the tensor product space $\mathcal{V}^* \otimes \mathcal{V}^*$ given by:
 \begin{equation}
-  B_r(\matr{x}) = \left\{\matr{y}: d(\matr{x}, \matr{y}) < r \right\}
+  \tensor{T}{_{\alpha \beta}} e^\alpha \otimes e^\beta
 \end{equation}
 
-**Closed ball** of radius $r$ centred at $\matr{x}$ is the collection of all the points of distance less than or equal to $r$ from $\matr{x}$, i.e.:
+We can actually have Cartesian products of more than two vector spaces, and accordingly mapping to real numbers consist of tensor product of dual spaces:
 \begin{equation}
-  B_r(\matr{x}) = \left\{\matr{y}: d(\matr{x}, \matr{y}) \leq r \right\}
+  \mathcal{V}^* \otimes \mathcal{V}^* \otimes \mathcal{V}^* \otimes \dots: \mathcal{V} \times \mathcal{V} \times \mathcal{V} \times \dots \to \mathbb{R}
 \end{equation}
-
-**Hausdorff space** is a topological space where for any two points there exist neighbourhoods of each which are disjoint from each other.
-
-For spaces, such as $\mathbb{R}^n$, the exact definition of distance function is not important when discussing its topology. For example, we can use many different definitions of a distance function to define neighbourhoods. We only need the notion that the distance between two distinct points can be made arbitrarily small but that it would not become zero. When topology of a space is not strictly dependent on definition of distance function, we usually call it **natural topology**.
-
-### Proof: open ball is an open set
-
-Suppose that $B_r(\matr{x})$ is an open ball.
-
-For any $\matr{y} \in B_r(\matr{x})$, let $r_1 = r - d(\matr{x}, \matr{y})$.
-
-\begin{equation} \label{eq:ball_radius}
-\Rightarrow r_1 + d(\matr{x}, \matr{y}) = r
-\end{equation}
-
-Suppose that $\matr{z} \in B_{r_1}(\matr{y})$. Then by triangle inequality:
-
-\begin{equation} \label{eq:triangle_inequality}
-  d(\matr{x}, \matr{z}) \leq d(\matr{x}, \matr{y}) + d(\matr{y}, \matr{z})
-\end{equation}
-
-Because $\matr{z} \in B_{r_1}(\matr{y})$:
-
+with an arbitrary member of the tensor product space $\mathcal{V}^* \otimes \mathcal{V}^* \otimes \mathcal{V}^* \otimes \dots$ given by:
 \begin{equation}
-  d(\matr{y}, \matr{z}) < r_1
+  \tensor{T}{_{\alpha \beta \gamma \dots}} e^\alpha \otimes e^\beta \otimes e^\gamma \otimes \dots
 \end{equation}
 
-Then:
-
+Similarly, we can have tensor products of vector spaces acting as maps from the Cartesian products of dual spaces to real numbers:
 \begin{equation}
-  d(\matr{y}, \matr{z}) + d(\matr{y}, \matr{z}) < r_1 + d(\matr{y}, \matr{z}) 
+  \mathcal{V} \otimes \mathcal{V} \otimes \mathcal{V} \otimes \dots: \mathcal{V}^* \times \mathcal{V}^* \times \mathcal{V}^* \times \dots \to \mathbb{R}
 \end{equation}
-
-Using equation \ref{eq:ball_radius}: 
+with an arbitrary member of the tensor product space $\mathcal{V} \otimes \mathcal{V} \otimes \mathcal{V} \otimes \dots$ given by:
 \begin{equation}
-  d(\matr{y}, \matr{z}) + d(\matr{y}, \matr{z}) < r
+  \tensor{T}{^{\alpha \beta \gamma \dots}} e_\alpha \otimes e_\beta \otimes e_\gamma \otimes \dots
 \end{equation}
 
-Combining with equation \ref{eq:triangle_inequality}:
+Quickly, we should understand how tensor product of vector spaces acts on Cartesian products of dual spaces. Suppose that $\alpha, \beta \in \mathcal{V}^*$ and $v, w \in \mathcal{V}$. Then the tensor product, $v \otimes w$, operating on the pair $(\alpha, \beta)$ will be defined as:
 \begin{equation}
-  d(\matr{x}, \matr{z}) \leq d(\matr{x}, \matr{y}) + d(\matr{y}, \matr{z}) < r
+  \left[ w \otimes w \right] (\alpha, \beta) = \inner{\alpha}{v} \inner{\beta}{w}
 \end{equation}
+Note that the order is the same as in equation \ref{eq:covector_tensor_product_on_vector_cartesian_product}.
 
-Thus:
+Furthermore, we can have tensor products of both vector spaces and dual spaces which could act as maps from Cartesian products of both dual spaces and vector spaces to real numbers. The order in which the vector spaces and dual spaces are arranged is important because members of Cartesian product spaces are *ordered* pairs (or lists, if more than two). For example, we could have:
 \begin{equation}
-  d(\matr{x}, \matr{z}) < r
+  \mathcal{V} \otimes \mathcal{V}^* \otimes \mathcal{V}^* \otimes \mathcal{V} \otimes \mathcal{V}^*: \mathcal{V}^* \times \mathcal{V} \times \mathcal{V} \times \mathcal{V}^* \times \mathcal{V} \to \mathbb{R}
+\end{equation}
+with an arbitrary member of the tensor product space $\mathcal{V} \otimes \mathcal{V}^* \otimes \mathcal{V}^* \otimes \mathcal{V} \otimes \mathcal{V}^*$ given by:
+\begin{equation}
+  \tensor{T}{^\alpha _{\beta \gamma} ^\delta _\epsilon} e_\alpha \otimes e^\beta \otimes e^\gamma \otimes e_\delta \otimes e^\epsilon
 \end{equation}
 
-Thus $B_r(\matr{x})$ is an open set. 
+Note the whitespace in component $\tensor{T}{^\alpha _{\beta \gamma} ^\delta _\epsilon}$---it is important to retain the information about the order of vector spaces and dual spaces because bases are often not provided, only the component is given.

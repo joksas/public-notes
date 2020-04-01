@@ -1,0 +1,73 @@
+---
+title: "Geometrical Methods of Mathematical Physics"
+---
+
+# Space $\mathbb{R}^n$ and its topology
+
+**Distance function** between two points $\matr{x} = (x_1, \dots, x_n)$ and $\matr{y} = (y_1, \dots, y_n)$ is:
+\begin{equation}
+  d(\matr{x}, \matr{y}) = \left[ \sum\limits_{i=1}^n (x_i - y_i)^2 \right]^{1/2}
+\end{equation}
+
+**Neighbourhood** of radius $r$ of the point $\matr{x}$ in $\mathbb{R}^n$ is the set of points $N_r(\matr{x})$ whose distance from $\matr{x}$ is *less* than $r$.
+
+A set of points $\matr{S}$ is **open** if every point $\matr{x}$ in $\matr{S}$ has a neighbourhood entirely contained in $\matr{S}$. 
+
+**Open ball** of radius $r$ centred at $\matr{x}$ is the collection of all the points of distance less than $r$ from $\matr{x}$, i.e.:
+\begin{equation}
+  B_r(\matr{x}) = \left\{\matr{y}: d(\matr{x}, \matr{y}) < r \right\}
+\end{equation}
+
+**Closed ball** of radius $r$ centred at $\matr{x}$ is the collection of all the points of distance less than or equal to $r$ from $\matr{x}$, i.e.:
+\begin{equation}
+  B_r(\matr{x}) = \left\{\matr{y}: d(\matr{x}, \matr{y}) \leq r \right\}
+\end{equation}
+
+**Hausdorff space** is a topological space where for any two points there exist neighbourhoods of each which are disjoint from each other.
+
+For spaces, such as $\mathbb{R}^n$, the exact definition of distance function is not important when discussing its topology. For example, we can use many different definitions of a distance function to define neighbourhoods. We only need the notion that the distance between two distinct points can be made arbitrarily small but that it would not become zero. When topology of a space is not strictly dependent on definition of distance function, we usually call it **natural topology**.
+
+## Proof: open ball is an open set
+
+Suppose that $B_r(\matr{x})$ is an open ball.
+
+For any $\matr{y} \in B_r(\matr{x})$, let $r_1 = r - d(\matr{x}, \matr{y})$.
+
+\begin{equation} \label{eq:ball_radius}
+\Rightarrow r_1 + d(\matr{x}, \matr{y}) = r
+\end{equation}
+
+Suppose that $\matr{z} \in B_{r_1}(\matr{y})$. Then by triangle inequality:
+
+\begin{equation} \label{eq:triangle_inequality}
+  d(\matr{x}, \matr{z}) \leq d(\matr{x}, \matr{y}) + d(\matr{y}, \matr{z})
+\end{equation}
+
+Because $\matr{z} \in B_{r_1}(\matr{y})$:
+
+\begin{equation}
+  d(\matr{y}, \matr{z}) < r_1
+\end{equation}
+
+Then:
+
+\begin{equation}
+  d(\matr{y}, \matr{z}) + d(\matr{y}, \matr{z}) < r_1 + d(\matr{y}, \matr{z}) 
+\end{equation}
+
+Using equation \ref{eq:ball_radius}: 
+\begin{equation}
+  d(\matr{y}, \matr{z}) + d(\matr{y}, \matr{z}) < r
+\end{equation}
+
+Combining with equation \ref{eq:triangle_inequality}:
+\begin{equation}
+  d(\matr{x}, \matr{z}) \leq d(\matr{x}, \matr{y}) + d(\matr{y}, \matr{z}) < r
+\end{equation}
+
+Thus:
+\begin{equation}
+  d(\matr{x}, \matr{z}) < r
+\end{equation}
+
+Thus $B_r(\matr{x})$ is an open set. 
