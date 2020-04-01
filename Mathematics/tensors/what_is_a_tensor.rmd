@@ -211,3 +211,20 @@ with an arbitrary member of the tensor product space $\mathcal{V} \otimes \mathc
 \end{equation}
 
 Note the whitespace in component $\tensor{T}{^\alpha _{\beta \gamma} ^\delta _\epsilon}$---it is important to retain the information about the order of vector spaces and dual spaces because bases are often not provided, only the component is given.
+
+# Rank of a tensor product space
+
+We usually say that tensors are tensor products of vector spaces followed by dual spaces. For example, $\mathcal{V} \otimes \mathcal{V}^* \otimes \mathcal{V}^*$ would be called a tensor while $\mathcal{V}^* \otimes \mathcal{V} \otimes \mathcal{V}$ would not (even though both are multilinear maps).
+
+Rank (defined only for tensors, as described above) of a tensor product space is a pair of numbers: the first one is the number of vector spaces and the second one is the number of dual spaces in the tensor product. A vector space would have rank $(1, 0)$, a dual space would have rank $(0, 1)$, $\mathcal{V} \otimes \mathcal{V}^* \otimes \mathcal{V}^*$ would have rank $(1, 2)$, etc. We will refer to tensors of rank $(a, b)$ as $\mathcal{T}^a_b$.
+
+Suppose that we have a tensor product space element $\tensor{T}{^\mu_{\nu \lambda}} e_\mu \otimes e^\nu \otimes e^\lambda$ operating on $\left( A_\xi e^\xi, B^\delta e_\delta, C^\gamma e_\gamma \right)$:
+\begin{align}
+\begin{split}
+  \tensor{T}{^\mu_{\nu \lambda}} \left[ e_\mu \otimes e^\nu \otimes e^\lambda \right] \left( A_\xi e^\xi, B^\delta e_\delta, C^\gamma e_\gamma \right)  &= \tensor{T}{^\mu_{\nu \lambda}} \inner{A_\xi e^\xi}{e_\mu} \inner{e^\nu}{B^\delta e_\delta} \inner{e^\lambda}{C^\gamma e_\gamma} \\
+  &= \tensor{T}{^\mu_{\nu \lambda}} A_\xi B^\delta C^\gamma \inner{e^\xi}{e_\mu} \inner{e^\nu}{e_\delta} \inner{e^\lambda}{e_\gamma} \\
+  &= \tensor{T}{^\mu_{\nu \lambda}} A_\xi B^\delta C^\gamma \delta^\xi_\mu \delta^\nu_\delta \delta^\lambda_\gamma \\
+  &= \tensor{T}{^\mu_{\nu \lambda}} A_\mu B^\nu C^\lambda
+\end{split}
+\end{align}
+Usually, one would simply use the expression in the last line because this procedure applies to all tensor product spaces.
