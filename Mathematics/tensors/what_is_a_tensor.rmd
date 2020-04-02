@@ -231,3 +231,69 @@ Suppose that we have a tensor product space element $\tensor{T}{^\mu_{\nu \lambd
 \end{split}
 \end{align}
 Usually, one would simply use the expression in the last line because this procedure applies to all tensor product spaces.
+
+# Linear transformations
+
+Suppose that we have vector space $\mathcal{V}$ and a vector $w$ in it. This vector could be expressed using a set of bases $e_\mu$ as $A^\mu e_\mu$, for example. Equivalently, it could be expressed using a set of bases $f_\nu$ as $B^\nu f_\nu$, for example. That is:
+\begin{equation}
+  w = A^\mu e_\mu = B^\nu f_\nu
+\end{equation}
+
+Any base $f_\nu$ can be expressed as a linear combinations of bases $e_\mu$. That is because bases are vectors too. For each of the bases, we would have:
+\begin{align}
+\begin{split}
+  f_0 &= \tensor{\Lambda}{_0^0} e_0 + \tensor{\Lambda}{_0^1} e_1 + \tensor{\Lambda}{_0^2} e_2 + \tensor{\Lambda}{_0^3} e_3 = \tensor{\Lambda}{_0^\mu} e_\mu \\
+  f_1 &= \tensor{\Lambda}{_1^0} e_0 + \tensor{\Lambda}{_1^1} e_1 + \tensor{\Lambda}{_1^2} e_2 + \tensor{\Lambda}{_1^3} e_3 = \tensor{\Lambda}{_1^\mu} e_\mu \\
+  f_2 &= \tensor{\Lambda}{_2^0} e_0 + \tensor{\Lambda}{_2^1} e_1 + \tensor{\Lambda}{_2^2} e_2 + \tensor{\Lambda}{_2^3} e_3 = \tensor{\Lambda}{_2^\mu} e_\mu \\
+  f_3 &= \tensor{\Lambda}{_3^0} e_0 + \tensor{\Lambda}{_3^1} e_1 + \tensor{\Lambda}{_3^2} e_2 + \tensor{\Lambda}{_3^3} e_3 = \tensor{\Lambda}{_3^\mu} e_\mu 
+\end{split}
+\end{align}
+Or more compactly:
+\begin{equation} \label{eq:f_to_e_base_change}
+  f_\nu  = \tensor{\Lambda}{_\nu^\mu} e_\mu 
+\end{equation}
+here $f_\nu$ and $e_\mu$ are rank-1 tensors, while $\tensor{\Lambda}{_\nu^\mu}$ is a matrix (not a tensor!).
+
+So if we have a vector expressed as $w = B^\nu e_\nu$, we can use equation \ref{eq:f_to_e_base_change} to use base $e$ instead:
+\begin{equation}
+  w = B^\nu e_\nu = B^\nu \tensor{\Lambda}{_\nu^\mu} e_\mu
+\end{equation}
+here $B^\nu \tensor{\Lambda}{_\nu^\mu}$ are just real numbers (coefficients). We can thus say that:
+\begin{equation}
+  A^\mu = B^\nu \tensor{\Lambda}{_\nu^\mu}
+\end{equation}
+this is a transformation that allows to go from coefficients in $e$ basis to coefficients in $f$ basis.
+
+How do we go from $e$ basis to $f$ basis and from coefficients in $f$ basis to coefficients in $e$ basis? For that we would need to find $e$ in terms of $f$:\footnote{not completely sure about derivation but the answer should be correct}
+\begin{align} \label{eq:e_to_f_base_change} 
+\begin{split}
+  f_\nu &= \tensor{\Lambda}{_\nu^\mu} e_\mu \\
+  \tensor{\left( \Lambda^{-1} \right)}{_\gamma^\nu} f_\nu &= \tensor{\left( \Lambda^{-1} \right)}{_\gamma^\nu} \tensor{\Lambda}{_\nu^\mu} e_\mu \\
+  \tensor{\left( \Lambda^{-1} \right)}{_\gamma^\nu} f_\nu &= \delta_\gamma^\mu e_\mu \\
+  \tensor{\left( \Lambda^{-1} \right)}{_\gamma^\nu} f_\nu &= e_\gamma \\
+   e_\gamma &= \tensor{\left( \Lambda^{-1} \right)}{_\gamma^\nu} f_\nu \quad \text{switch sides of the equation} \\
+   e_\mu &= \tensor{\left( \Lambda^{-1} \right)}{_\mu^\nu} f_\nu \quad \text{rename $\gamma$ to $\mu$} \
+\end{split}
+\end{align}
+
+So if we have a vector expressed as $w = A^\mu e_\mu$, we can use equation \ref{eq:e_to_f_base_change} to use base $f$ instead:
+\begin{equation}
+  w = A^\mu e_\mu = A^\mu \tensor{\left( \Lambda^{-1} \right)}{_\mu^\nu} f_\nu 
+\end{equation}
+here $A^\mu \tensor{\left( \Lambda^{-1} \right)}{_\mu^\nu}$ are just real numbers (coefficients). We can thus say that:
+\begin{equation}
+  B^\nu = A^\mu \tensor{\left( \Lambda^{-1} \right)}{_\mu^\nu} 
+\end{equation}
+this is a transformation that allows to go from coefficients in $f$ basis to coefficients in $e$ basis.
+
+We say that bases $f$ transform **covariantly** (because they use matrix $\Lambda$), while coefficients $B$ transform **contravariantly** (because they use the inverse of matrix $\Lambda$).
+
+We can additionally make sure that all these transformations make sense:
+\begin{align}
+\begin{split}
+   w &= B^\nu f_\nu \\
+     &= \underbrace{A^\epsilon \tensor{\left( \Lambda^{-1} \right)}{_\epsilon^\nu}}_{B^\nu} \underbrace{\tensor{\Lambda}{_\nu^\gamma} e_\gamma}_{f_\nu} \\
+     &= A^\epsilon \delta_\epsilon^\gamma e_\gamma \\
+     &= A^\mu e_\mu
+\end{split}
+\end{align}
