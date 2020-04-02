@@ -3,6 +3,9 @@ title: "What is a Tensor?
 "
 ---
 
+\tableofcontents
+\clearpage
+
 # Elementary vector spaces
 
 Vector space is a set of vectors. However, it is important to talk about specific requirements that this mathematical set has to satisfy. 
