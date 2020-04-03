@@ -286,7 +286,7 @@ here $A^\mu \tensor{\left( \Lambda^{-1} \right)}{_\mu^\nu}$ are just real number
 \end{equation}
 this is a transformation that allows to go from coefficients in $f$ basis to coefficients in $e$ basis.
 
-We say that bases $f$ transform **covariantly** (because they use matrix $\Lambda$), while coefficients $B$ transform **contravariantly** (because they use the inverse of matrix $\Lambda$).
+We say that bases $f$ transform **covariantly** (because they use matrix $\Lambda$), while coefficients $B$ transform **contravariantly** (because they use the inverse of matrix $\Lambda$). In general, objects with subscripts transform covariantly and objects with superscripts transform contravariantly.
 
 We can additionally make sure that all these transformations make sense:
 \begin{align}
@@ -296,4 +296,23 @@ We can additionally make sure that all these transformations make sense:
      &= A^\epsilon \delta_\epsilon^\gamma e_\gamma \\
      &= A^\mu e_\mu
 \end{split}
+\end{align}
+
+# Transformations of tensor product spaces
+
+Suppose $\mathcal{V}$ has bases $e_\mu$ and $\hat{e}_\mu$ and its dual space $\mathcal{V}^*$ has bases $e^\nu$ and $\hat{e}^\nu$. If bases of $\mathcal{V}$ transform using $\hat{e}_\mu = \tensor{\Lambda}{_\mu^\gamma} e_\gamma$, then bases of $\mathcal{V}^*$ transform using $\hat{e}^\nu = \tensor{\left( \Lambda^{-1} \right)}{_\lambda^\nu} e^\lambda$. Apparently, both of these expressions talk about the same matrix $\Lambda$ which is a consequence of us choosing dual space bases so that $\inner{e_\mu}{e^\nu} = \delta_\mu^\nu$, though I cannot prove it at this point.
+
+We can also transform objects in tensor product spaces. If we have space $\mathcal{T}^1_2$, then an arbitrary tensor in it could be represented as $\tensor{A}{^\mu_{\nu \lambda}} e_\mu \otimes e^\nu \otimes e^\lambda$. We can then apply transformations to individual bases:
+\begin{align}
+\begin{split}
+    &\tensor{A}{^\mu_{\nu \lambda}} e_\mu \otimes e^\nu \otimes e^\lambda \\
+  = &\tensor{A}{^\mu_{\nu \lambda}} \tensor{\Lambda}{_\mu^i} e_i \otimes \tensor{\left( \Lambda^{-1} \right)}{_j^\nu} e^j \otimes \tensor{\left( \Lambda^{-1} \right)}{_k^\lambda} e^k \\
+  = &\underbrace{\tensor{A}{^\mu_{\nu \lambda}} \Lambda \Lambda^{-1} \Lambda^{-1}}_{\tensor{\hat{A}}{^\mu_{\nu \lambda}}} \hat{e}_\mu \otimes \hat{e}^\nu \otimes \hat{e}^\lambda
+\end{split}
+\end{align}
+
+So $\tensor{\hat{A}}{^\mu_{\nu \lambda}} = \tensor{A}{^\mu_{\nu \lambda}} \Lambda \Lambda^{-1} \Lambda^{-1}$ (not sure about the indices of $\Lambda$ matrices). We thus have:
+\begin{align}
+  \tensor{\hat{A}}{^\mu_{\nu \lambda}} &= \tensor{A}{^\mu_{\nu \lambda}} \Lambda \Lambda^{-1} \Lambda^{-1} \\
+  \tensor{A}{^\mu_{\nu \lambda}} &= \tensor{\hat{A}}{^\mu_{\nu \lambda}} \Lambda^{-1} \Lambda \Lambda 
 \end{align}
