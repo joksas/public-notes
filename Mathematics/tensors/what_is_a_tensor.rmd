@@ -58,31 +58,31 @@ We can then talk of $\Lambda$ acting on a specific vector $\matr{v}$ in $\mathca
 
 However, we will usually use the following ("bracket") notation:
 \begin{equation}
-  \inner{\Lambda}{\matr{v}} \to \matr{w}
+  \map{\Lambda}{\matr{v}} \to \matr{w}
 \end{equation}
 
 All we need to do is to define *linear* mappings for basis $e_\mu$:
 \begin{align*}
 \begin{split}
-  \inner{\Lambda}{e_0} &= 3f_1 + 2f_4 + f_{10} \\
-  \inner{\Lambda}{e_1} &= \pi f_3 + f_0 \\
-  \inner{\Lambda}{e_2} &= f_2 \\
-  \inner{\Lambda}{e_3} &= f_3 + f_5 +f_7 + f_9
+  \map{\Lambda}{e_0} &= 3f_1 + 2f_4 + f_{10} \\
+  \map{\Lambda}{e_1} &= \pi f_3 + f_0 \\
+  \map{\Lambda}{e_2} &= f_2 \\
+  \map{\Lambda}{e_3} &= f_3 + f_5 +f_7 + f_9
 \end{split}
 \end{align*}
 
 **Linear mappings** have two properties (suppose that $\matr{u}, \matr{v} \in \mathcal{V}$ and that $\Lambda: \mathcal{V} \to \mathcal{W}$):
 \begin{align}
-  \inner{\Lambda}{\matr{u} + \matr{v}} &= \inner{\Lambda}{\matr{u}} + \inner{\Lambda}{\matr{v}} &\text{(additivity)} \\
-  \inner{\Lambda}{q \matr{u}} &= q \inner{\Lambda}{\matr{u}} \quad &\text{(homogeneity)}
+  \map{\Lambda}{\matr{u} + \matr{v}} &= \map{\Lambda}{\matr{u}} + \map{\Lambda}{\matr{v}} &\text{(additivity)} \\
+  \map{\Lambda}{q \matr{u}} &= q \map{\Lambda}{\matr{u}} \quad &\text{(homogeneity)}
 \end{align}
 all the terms on the RHS in the two above equations are vectors in $\mathcal{W}$.
 
 Once we know the mappings for individual basis vectors of $\mathcal{V}$, we know the mappings for any vector in $\mathcal{V}$. That is because vector $\matr{A}$ in $\mathcal{V}$ is equal to $A^\mu e_\mu$ and so:
 \begin{align}
 \begin{split}
-  \inner{\Lambda}{\matr{A}} &= \inner{\Lambda}{A^\mu e_\mu} \\
-  &= A^\mu \inner{\Lambda}{e_\mu}
+  \map{\Lambda}{\matr{A}} &= \map{\Lambda}{A^\mu e_\mu} \\
+  &= A^\mu \map{\Lambda}{e_\mu}
 \end{split}
 \end{align}
 
@@ -96,15 +96,15 @@ But can we also avoid creating an arbitrary map from $\mathcal{V}$ to $\mathbb{R
 
 We will now try to prove that dual space is a vector space. For this we need the following *definitions* (suppose that $\matr{v}$ is a vector in vector space $\mathcal{V}$, while $\Lambda$ and $\mathrm{Z}$ are maps in its dual space $\mathcal{V}^*$):
 \begin{align}
-  \inner{\Lambda + \mathrm{Z}}{\matr{v}} &= \inner{\Lambda}{\matr{v}} + \inner{\mathrm{Z}}{\matr{v}} \\
-  \inner{a \Lambda}{\matr{v}} &= a \inner{\Lambda}{\matr{v}} 
+  \map{\Lambda + \mathrm{Z}}{\matr{v}} &= \map{\Lambda}{\matr{v}} + \map{\mathrm{Z}}{\matr{v}} \\
+  \map{a \Lambda}{\matr{v}} &= a \map{\Lambda}{\matr{v}} 
 \end{align}
 
 If we also say that scalar multiplication by $-1$ gives an opposite map, we now have satisfied all the requirements for $\mathcal{V}^*$ to be a vector space. This shows that we cannot create a *single* vector space. Whenever we create $\mathcal{V}$, we automatically also create $\mathcal{V}^*$. We will use subscripts to denote the basis of "normal" vector space and a superscript to denote the basis of its dual space.
 
 How do we choose the basis of the dual space though? It is arbitrary! However, we can define a convenient rule that the bases should have to satisfy:
 \begin{equation}
-  \inner{e^\mu}{e_\nu} = \delta_\nu^\mu
+  \map{e^\mu}{e_\nu} = \delta_\nu^\mu
 \end{equation}
 
 # Cartesian products
@@ -116,8 +116,8 @@ Arbitrary map in a vector space can be expressed as $A^\mu e_\mu$, while an arbi
 Suppose we have arbitrary mapping:
 \begin{align}
 \begin{split}
-  \inner{\beta_\mu e^\mu}{A^\nu e_\nu} &= \\
-  \beta_\mu A^\nu \inner{e^\mu}{e_\nu} &= \\
+  \map{\beta_\mu e^\mu}{A^\nu e_\nu} &= \\
+  \beta_\mu A^\nu \map{e^\mu}{e_\nu} &= \\
   \beta_\mu A^\nu \delta_\nu^\mu &= \beta_\mu A^\mu
 \end{split}
 \end{align}
@@ -138,7 +138,7 @@ We want to create a map that maps from $\mathcal{V} \times \mathcal{V}$ to $\mat
 
 Suppose that $v, w \in \mathcal{V}$ and $\alpha, \beta \in \mathcal{V}^*$. Then the tensor product, $\alpha \otimes \beta$, operating on the pair $(v, w)$ will be defined as:
 \begin{equation} \label{eq:covector_tensor_product_on_vector_cartesian_product}
-  \left[ \alpha \otimes \beta \right] (v, w) = \inner{\alpha}{v} \inner{\beta}{w}
+  \left[ \alpha \otimes \beta \right] (v, w) = \map{\alpha}{v} \map{\beta}{w}
 \end{equation}
 
 One could name $\alpha \otimes \beta$ with some symbol, say $\Lambda$, because it is a mapping. However, that way it is easy to forget that it acts on two vectors, not just one.
@@ -147,7 +147,7 @@ We can make all tensor products of two covectors linear by making the following 
 \begin{align}
 \begin{split}
   \left[ a \left( \alpha \otimes \beta \right) \right] \left[ b \left( \gamma \otimes \delta \right) \right] (v, w) &= \\
-  a \left[ \alpha \otimes \beta \right] (v, w) + b \left[ \gamma \otimes \delta \right] (v, w) &= a \inner{\alpha}{v} \inner{\beta}{w} + b \inner{\gamma}{v} \inner{\delta}{w} 
+  a \left[ \alpha \otimes \beta \right] (v, w) + b \left[ \gamma \otimes \delta \right] (v, w) &= a \map{\alpha}{v} \map{\beta}{w} + b \map{\gamma}{v} \map{\delta}{w} 
 \end{split}
 \end{align}
 
@@ -156,8 +156,8 @@ If $\mathcal{V}$ has bases $e_\mu$ and $\mathcal{V}^*$ has bases $e^\nu$, then $
 Let us look at an example:
 \begin{align*}
   \left[ e^1 \otimes e^2 \right] \left( A^\mu e_\mu, B^\nu e_\nu \right) &= \\
-  \inner{e^1}{A^\mu e_\mu} \inner{e^2}{B^\nu e_\nu} &= \\
-  A^\mu \inner{e^1}{e_\mu} B^\nu \inner{e^2}{e_\nu} &= \\
+  \map{e^1}{A^\mu e_\mu} \map{e^2}{B^\nu e_\nu} &= \\
+  A^\mu \map{e^1}{e_\mu} B^\nu \map{e^2}{e_\nu} &= \\
   A^\mu \delta_\mu^1 B^\nu \delta _\nu^2 = A^1 B^2
 \end{align*}
 
@@ -200,7 +200,7 @@ with an arbitrary member of the tensor product space $\mathcal{V} \otimes \mathc
 
 Quickly, we should understand how tensor product of vector spaces acts on Cartesian products of dual spaces. Suppose that $\alpha, \beta \in \mathcal{V}^*$ and $v, w \in \mathcal{V}$. Then the tensor product, $v \otimes w$, operating on the pair $(\alpha, \beta)$ will be defined as:
 \begin{equation}
-  \left[ w \otimes w \right] (\alpha, \beta) = \inner{\alpha}{v} \inner{\beta}{w}
+  \left[ w \otimes w \right] (\alpha, \beta) = \map{\alpha}{v} \map{\beta}{w}
 \end{equation}
 Note that the order is the same as in equation \ref{eq:covector_tensor_product_on_vector_cartesian_product}.
 
@@ -224,8 +224,8 @@ Rank (defined only for tensors, as described above) of a tensor product space is
 Suppose that we have a tensor product space element $\tensor{T}{^\mu_{\nu \lambda}} e_\mu \otimes e^\nu \otimes e^\lambda$ operating on $\left( A_\xi e^\xi, B^\delta e_\delta, C^\gamma e_\gamma \right)$:
 \begin{align}
 \begin{split}
-  \tensor{T}{^\mu_{\nu \lambda}} \left[ e_\mu \otimes e^\nu \otimes e^\lambda \right] \left( A_\xi e^\xi, B^\delta e_\delta, C^\gamma e_\gamma \right)  &= \tensor{T}{^\mu_{\nu \lambda}} \inner{A_\xi e^\xi}{e_\mu} \inner{e^\nu}{B^\delta e_\delta} \inner{e^\lambda}{C^\gamma e_\gamma} \\
-  &= \tensor{T}{^\mu_{\nu \lambda}} A_\xi B^\delta C^\gamma \inner{e^\xi}{e_\mu} \inner{e^\nu}{e_\delta} \inner{e^\lambda}{e_\gamma} \\
+  \tensor{T}{^\mu_{\nu \lambda}} \left[ e_\mu \otimes e^\nu \otimes e^\lambda \right] \left( A_\xi e^\xi, B^\delta e_\delta, C^\gamma e_\gamma \right)  &= \tensor{T}{^\mu_{\nu \lambda}} \map{A_\xi e^\xi}{e_\mu} \map{e^\nu}{B^\delta e_\delta} \map{e^\lambda}{C^\gamma e_\gamma} \\
+  &= \tensor{T}{^\mu_{\nu \lambda}} A_\xi B^\delta C^\gamma \map{e^\xi}{e_\mu} \map{e^\nu}{e_\delta} \map{e^\lambda}{e_\gamma} \\
   &= \tensor{T}{^\mu_{\nu \lambda}} A_\xi B^\delta C^\gamma \delta^\xi_\mu \delta^\nu_\delta \delta^\lambda_\gamma \\
   &= \tensor{T}{^\mu_{\nu \lambda}} A_\mu B^\nu C^\lambda
 \end{split}
@@ -300,7 +300,7 @@ We can additionally make sure that all these transformations make sense:
 
 # Transformations of tensor product spaces
 
-Suppose $\mathcal{V}$ has bases $e_\mu$ and $\hat{e}_\mu$ and its dual space $\mathcal{V}^*$ has bases $e^\nu$ and $\hat{e}^\nu$. If bases of $\mathcal{V}$ transform using $\hat{e}_\mu = \tensor{\Lambda}{_\mu^\gamma} e_\gamma$, then bases of $\mathcal{V}^*$ transform using $\hat{e}^\nu = \tensor{\left( \Lambda^{-1} \right)}{_\lambda^\nu} e^\lambda$. Apparently, both of these expressions talk about the same matrix $\Lambda$ which is a consequence of us choosing dual space bases so that $\inner{e_\mu}{e^\nu} = \delta_\mu^\nu$, though I cannot prove it at this point.
+Suppose $\mathcal{V}$ has bases $e_\mu$ and $\hat{e}_\mu$ and its dual space $\mathcal{V}^*$ has bases $e^\nu$ and $\hat{e}^\nu$. If bases of $\mathcal{V}$ transform using $\hat{e}_\mu = \tensor{\Lambda}{_\mu^\gamma} e_\gamma$, then bases of $\mathcal{V}^*$ transform using $\hat{e}^\nu = \tensor{\left( \Lambda^{-1} \right)}{_\lambda^\nu} e^\lambda$. Apparently, both of these expressions talk about the same matrix $\Lambda$ which is a consequence of us choosing dual space bases so that $\map{e_\mu}{e^\nu} = \delta_\mu^\nu$, though I cannot prove it at this point.
 
 We can also transform objects in tensor product spaces. If we have space $\mathcal{T}^1_2$, then an arbitrary tensor in it could be represented as $\tensor{A}{^\mu_{\nu \lambda}} e_\mu \otimes e^\nu \otimes e^\lambda$. We can then apply transformations to individual bases:
 \begin{align}
