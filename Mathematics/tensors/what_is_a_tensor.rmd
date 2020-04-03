@@ -316,3 +316,60 @@ So $\tensor{\hat{A}}{^\mu_{\nu \lambda}} = \tensor{A}{^\mu_{\nu \lambda}} \Lambd
   \tensor{\hat{A}}{^\mu_{\nu \lambda}} &= \tensor{A}{^\mu_{\nu \lambda}} \Lambda \Lambda^{-1} \Lambda^{-1} \\
   \tensor{A}{^\mu_{\nu \lambda}} &= \tensor{\hat{A}}{^\mu_{\nu \lambda}} \Lambda^{-1} \Lambda \Lambda 
 \end{align}
+
+# Metric spaces
+
+We will now add one more property to our vector space $\mathcal{V}$---a function $\inner{v}{w}$, where $v, w \in \mathcal{V}$, that returns a real number. Note that the same notation is used for ordered pairs, so it is important not to confuse the two concepts. This new function will be called **inner product** or **metric**. It will have the following properties:
+\begin{align}
+  \inner{v}{w} &= a \in \mathbb{R} \\
+  \inner{\lambda v}{w} &= \lambda \inner{v}{w} \quad \lambda \in \mathbb{R} \\
+  \inner{v + t}{w} &= \lambda \inner{v}{w} + \inner{t}{w} \quad t \in \mathcal{V} \\
+  \inner{v}{w} &= \inner{w}{v} 
+\end{align}
+
+When discussing inner products, two more properties often get defined (which we will not use):
+\begin{align}
+  \inner{v}{v} &\geq 0 \\
+  \inner{v}{v} &= 0 \iff v = 0
+\end{align}
+If an inner product or a metric has these properties, it is called **positive definite** (though it would make sense to me to call it semi-definite instead...), otherwise (as in our case), it is called **indefinite**. If the metric is positive-definite, then the metric space is called **Riemannian**, if it is indefinite, then the metric space is called **pseudo-Riemannian**. General relativity uses pseudo-Riemannian metric spaces.
+
+An arbitrary metric of two vectors in $\mathcal{V}$ would look like this:
+\begin{align}
+\begin{split}
+  \inner{A^\mu e_\mu}{B^\nu e_\nu} &= A^\mu B^\nu \inner{e_\mu}{e_\nu} \\
+  &= A^0 B^0 \inner{e_0}{e_0} + A^0 B^1 \inner{e_0}{e_1} + \dots + A^3 B^3 \inner{e_3}{e_3}
+\end{split}
+\end{align}
+
+Because the coefficients will be known, we simply have to define what the metrics of individual pairs of bases will be. In relativity, they are defined in the following way:
+\begin{align}
+\begin{split}
+  &\inner{e_0}{e_0} = -1 \quad \inner{e_1}{e_1} = 1 \\
+  &\inner{e_2}{e_2} = 1 \quad \inner{e_3}{e_3} = 1 \\
+  \text{the rest are equal to zero}
+\end{split}
+\end{align}
+
+These metrics are summarised using **Minkowski metric**:
+\begin{equation}
+  \inner{e_\mu}{e_\nu} = \eta_{\mu \nu}
+\end{equation}
+
+The elements of Minkowski metric can be represented using a matrix:
+\begin{equation}
+   \left( \eta \right)_{\mu \nu} =
+   \begin{bmatrix}
+     -1 & 0 & 0 & 0 \\
+      0 & 1 & 0 & 0 \\
+      0 & 0 & 1 & 0 \\
+      0 & 0 & 0 & 1
+   \end{bmatrix}
+\end{equation}
+Minkowski metric is just one arbitrary choice of what each of the metric of bases is equal to, but usually in general relativity nature has a way of picking metric spaces that matter.
+
+The operation of metric can be replicated using tensor $\mathcal{T}^0_2$:
+\begin{equation}
+  \left[ g_{\mu \nu} e^\mu \otimes e^\nu \right] (v, w) = a \in \mathbb{R}
+\end{equation}
+$g_{\mu \nu}$ is called the **metric tensor**.
