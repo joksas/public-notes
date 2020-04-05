@@ -347,7 +347,7 @@ Because the coefficients will be known, we simply have to define what the metric
 \begin{split}
   &\inner{e_0}{e_0} = -1 \quad \inner{e_1}{e_1} = 1 \\
   &\inner{e_2}{e_2} = 1 \quad \inner{e_3}{e_3} = 1 \\
-  \text{the rest are equal to zero}
+  &\text{the rest are equal to zero}
 \end{split}
 \end{align}
 
@@ -370,6 +370,34 @@ Minkowski metric is just one arbitrary choice of what each of the metric of base
 
 The operation of metric can be replicated using tensor $\mathcal{T}^0_2$:
 \begin{equation}
-  \left[ g_{\mu \nu} e^\mu \otimes e^\nu \right] (v, w) = a \in \mathbb{R}
+  \left[ g_{\mu \nu} e^\mu \otimes e^\nu \right] \underbrace{(v, w)}_\text{ordered pair} = a \in \mathbb{R}
 \end{equation}
 $g_{\mu \nu}$ is called the **metric tensor**.
+
+# The metric tensor
+
+Let us try to show that metric tensor can act as an operator for the metric operation:
+\begin{align}
+\begin{split}
+  \left[ g_{\alpha \beta} e^\alpha \otimes e^\beta \right] (A^\mu e_\mu, B^\nu e_\nu) &= g_{\alpha \beta} \map{e^\alpha}{A^\mu e_\mu} \map{e^\beta}{B^\nu e_\nu} \\
+  &= g_{\alpha \beta} A^\mu B^\nu \map{e^\alpha}{e_\mu} \map{e^\beta}{e_\nu} \\
+  &= g_{\alpha \beta} A^\mu B^\nu \delta^\alpha_\mu \delta^\beta_\nu \\
+  &= g_{\alpha \beta} A^\alpha B^\beta 
+\end{split}
+\end{align}
+This is exactly the metric operation, with $g_{\alpha \beta}$ being the value of metric of bases $e_\alpha$ and $e_\beta$.
+
+What happens if we do not supply the second vector?
+
+\begin{align}
+\begin{split}
+  \left[ g_{\alpha \beta} e^\alpha \otimes e^\beta \right] (A^\mu e_\mu, \Box) &= g_{\alpha \beta} \map{e^\alpha}{A^\mu e_\mu} \map{e^\beta}{\Box} \\
+  &= g_{\alpha \beta} A^\mu \map{e^\alpha}{e_\mu} \map{e^\beta}{\Box} \\
+  &= g_{\alpha \beta} A^\mu e^\beta \delta^\alpha_\mu \\
+  &= g_{\alpha \beta} A^\alpha e^\beta \\
+  &= A_\alpha e^\beta
+\end{split}
+\end{align}
+because $\map{e^\beta}{\Box}$ is just $e^\beta$ mapping nothing, only the map remains when going from line 2 to line 3.
+
+In this case, when supplying only one vector, metric tensor allowed us to produce a covector. This can be referred to as *lowering the indices* of components.
