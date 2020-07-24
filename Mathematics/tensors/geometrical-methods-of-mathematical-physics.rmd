@@ -2,6 +2,10 @@
 title: "Geometrical Methods of Mathematical Physics"
 ---
 
+These are my notes for the textbook "Geometrical Methods of Mathematical Physics" by  Bernard Schutz. It is unlikely that I will develop these further.
+
+\clearpage
+
 # Space $\mathbb{R}^n$ and its topology
 
 **Distance function** between two points $\matr{x} = (x_1, \dots, x_n)$ and $\matr{y} = (y_1, \dots, y_n)$ is:
