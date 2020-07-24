@@ -13,7 +13,7 @@ Vector space is a set of vectors. However, it is important to talk about specifi
 Properties of vector space $\mathcal{W}$:
 
 1. **Vector addition**. One should be able to add vectors, but only those that are in the vector space. If $\matr{w}, \matr{s} \in \mathcal{W}$, then $\matr{w} + \matr{s} = \matr{t} \in \mathcal{W}$.
-2. **Scalar multiplication**. If $a \in \mathbb{R}$ and $\matr{w} \in \mathcal{W}$, then $a\matr{w} \in \mathcal{W}$. Vector spaces can be either real or complex, depending on what type of vector $a$ is.
+2. **Scalar multiplication**. If $a \in \mathbb{R}$ and $\matr{w} \in \mathcal{W}$, then $a\matr{w} \in \mathcal{W}$. Vector spaces can be either real or complex, depending on what type of vector $\matr{w}$ is.
 3. **Linearity**:
    * $a\matr{w} + b\matr{v} = \matr{z}$
    * $a\matr{w} + a\matr{t} = a(\matr{w} + \matr{t})$
@@ -264,7 +264,7 @@ here $B^\nu \tensor{\Lambda}{_\nu^\mu}$ are just real numbers (coefficients). We
 \end{equation}
 this is a transformation that allows to go from coefficients in $e$ basis to coefficients in $f$ basis.
 
-How do we go from $e$ basis to $f$ basis and from coefficients in $f$ basis to coefficients in $e$ basis? For that we would need to find $e$ in terms of $f$:\footnote{not completely sure about derivation but the answer should be correct}
+How do we go from $e$ basis to $f$ basis and from coefficients in $f$ basis to coefficients in $e$ basis? For that we would need to find $e$ in terms of $f$:\footnote{I am not completely sure about the derivation but the answer should be correct.}
 \begin{align} \label{eq:e_to_f_base_change} 
 \begin{split}
   f_\nu &= \tensor{\Lambda}{_\nu^\mu} e_\mu \\
@@ -300,7 +300,7 @@ We can additionally make sure that all these transformations make sense:
 
 # Transformations of tensor product spaces
 
-Suppose $\mathcal{V}$ has bases $e_\mu$ and $\hat{e}_\mu$ and its dual space $\mathcal{V}^*$ has bases $e^\nu$ and $\hat{e}^\nu$. If bases of $\mathcal{V}$ transform using $\hat{e}_\mu = \tensor{\Lambda}{_\mu^\gamma} e_\gamma$, then bases of $\mathcal{V}^*$ transform using $\hat{e}^\nu = \tensor{\left( \Lambda^{-1} \right)}{_\lambda^\nu} e^\lambda$. Apparently, both of these expressions talk about the same matrix $\Lambda$ which is a consequence of us choosing dual space bases so that $\map{e_\mu}{e^\nu} = \delta_\mu^\nu$, though I cannot prove it at this point.
+Suppose $\mathcal{V}$ has bases $e_\mu$ and $\hat{e}_\mu$ and its dual space $\mathcal{V}^*$ has bases $e^\nu$ and $\hat{e}^\nu$. If bases of $\mathcal{V}$ transform using $\hat{e}_\mu = \tensor{\Lambda}{_\mu^\gamma} e_\gamma$, then bases of $\mathcal{V}^*$ transform using $\hat{e}^\nu = \tensor{\left( \Lambda^{-1} \right)}{_\lambda^\nu} e^\lambda$. Apparently\footnote{i.e. I cannot prove it at this point.}, both of these expressions talk about the same matrix $\Lambda$ which is a consequence of us choosing dual space bases so that $\map{e_\mu}{e^\nu} = \delta_\mu^\nu$.
 
 We can also transform objects in tensor product spaces. If we have space $\mathcal{T}^1_2$, then an arbitrary tensor in it could be represented as $\tensor{A}{^\mu_{\nu \lambda}} e_\mu \otimes e^\nu \otimes e^\lambda$. We can then apply transformations to individual bases:
 \begin{align}
@@ -311,7 +311,7 @@ We can also transform objects in tensor product spaces. If we have space $\mathc
 \end{split}
 \end{align}
 
-So $\tensor{\hat{A}}{^\mu_{\nu \lambda}} = \tensor{A}{^\mu_{\nu \lambda}} \Lambda \Lambda^{-1} \Lambda^{-1}$ (not sure about the indices of $\Lambda$ matrices). We thus have:
+Because\footnote{Not sure about the indices of $\Lambda$ matrices though.} $\tensor{\hat{A}}{^\mu_{\nu \lambda}} = \tensor{A}{^\mu_{\nu \lambda}} \Lambda \Lambda^{-1} \Lambda^{-1}$, we thus have:
 \begin{align}
   \tensor{\hat{A}}{^\mu_{\nu \lambda}} &= \tensor{A}{^\mu_{\nu \lambda}} \Lambda \Lambda^{-1} \Lambda^{-1} \\
   \tensor{A}{^\mu_{\nu \lambda}} &= \tensor{\hat{A}}{^\mu_{\nu \lambda}} \Lambda^{-1} \Lambda \Lambda 
@@ -332,7 +332,7 @@ When discussing inner products, two more properties often get defined (which we 
   \inner{v}{v} &\geq 0 \\
   \inner{v}{v} &= 0 \iff v = 0
 \end{align}
-If an inner product or a metric has these properties, it is called **positive definite** (though it would make sense to me to call it semi-definite instead...), otherwise (as in our case), it is called **indefinite**. If the metric is positive-definite, then the metric space is called **Riemannian**, if it is indefinite, then the metric space is called **pseudo-Riemannian**. General relativity uses pseudo-Riemannian metric spaces.
+If an inner product or a metric has these properties, it is called **positive definite**\footnote{Personally, it would make sense to me to call it semi-definite instead, given the convention in linear algebra...}, otherwise (as in our case), it is called **indefinite**. If the metric is positive-definite, then the metric space is called **Riemannian**, if it is indefinite, then the metric space is called **pseudo-Riemannian**. General relativity uses pseudo-Riemannian metric spaces.
 
 An arbitrary metric of two vectors in $\mathcal{V}$ would look like this:
 \begin{align}
