@@ -1,0 +1,53 @@
+---
+title: "Irresistible Integrals"
+---
+
+These are my notes for the textbook "Irresistible Integrals" by George Boros and Victor Moll.
+
+\clearpage
+
+# Chapter 1
+
+## 1.6 The Integration of Polynomials
+
+### Exercise 1.6.1.
+
+> a) Using the method of induction and the product rule, show that $\diff{}{x} x^n = n x^{n-1}$ for $n \in \mathbb{N}$.
+
+Base case $k=0$:
+$$\diff{}{x} x^0 = \diff{}{x} 1 = 0 = 0 \times x^{-1}$$
+
+Let us show that it is also true for $n = k+1$:
+\begin{align*}
+  \diff{}{x} x^{k+1}
+  &= \diff{}{x} \left( x x^k \right) \\
+  &= x^k \diff{}{x} x + x \diff{}{x} x^k \\
+  &= x^k \times 1 + x \times k x^{k-1} \\
+  &= x^k + k \times x^k \\
+  &= (k+1) x^k
+\end{align*}
+
+Since the base case and the inductive step have been proven, $\diff{}{x} x^n = n x^{n-1}$ for $n \in \mathbb{N}$.
+
+> b) Extend to $n = p/q \in \mathbb{Q}, q \neq 0$.
+
+Let us say that
+$$y = x^n = x^{p/q}$$
+Then
+\begin{align*}
+  y^q &= x^p \\
+  \diff{y^q}{x} &= \diff{x^p}{x} \\
+  q y^{q-1} \diff{y}{x} &= p x^{p-1} \quad \text{implicit differentiation on LHS} \\
+  \diff{y}{x} &= \frac{p}{q} \frac{x^{p-1}}{y^{q-1}} \\
+  &= \frac{p}{q} \frac{x^{p-1}}{\left( x^{p/q} \right)^{q-1}} \\
+  &= \frac{p}{q} \frac{x^{p-1}}{x^{p-p/q}} \\
+  &= \frac{p}{q} x^{(p-1) - \left( p-p/q \right)} \\
+  &= \frac{p}{q} x^{p/q - 1} \\
+  &= n x^{n - 1} \\
+\end{align*}
+
+## Exercise 1.6.2.
+
+> Let $a_{k, j}: 0 \leq k, j \leq n$ be an array of numbers. Prove that
+> $$\sum_{k=0}^n \sum_{j=0}^k a _{k, j} = \sum_{j=0}^n \sum_{k=j}^n a_{k, j}$$
+> This identity is referred as *reversing the order of summation*.
