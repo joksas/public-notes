@@ -1,6 +1,5 @@
 ---
-title: "What is a Tensor?
-"
+title: "What is a Tensor?"
 ---
 
 These are my notes for part of the course [What is a Tensor?](https://www.youtube.com/playlist?list=PLRlVmXqzHjUQARA37r4Qw3SHPqVXgqO6c) on YouTube by the brilliant [XylyXylyX](https://www.youtube.com/channel/UCn88wjHSqECSbgrakivJjjg). If you find anything useful in here, thank XylyXylyX because I was just trying to summarize what he was saying. However, I am not a mathematician so assume that any mistakes in here are mine. 
