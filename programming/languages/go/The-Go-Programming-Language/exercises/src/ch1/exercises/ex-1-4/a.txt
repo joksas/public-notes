@@ -1,0 +1,9 @@
+dog
+dog
+cat
+bird
+dog
+pig
+dog
+bird
+lion
