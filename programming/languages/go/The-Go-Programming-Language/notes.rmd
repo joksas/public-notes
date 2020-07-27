@@ -5,3 +5,87 @@ title: "The Go Programming Language"
 These are my notes for the textbook "The Go Programming Language" by Alan Donovan and Brian Kernighan.
 
 \clearpage
+
+# Chapter 1
+
+## Section 1.2
+
+* Comments begin with `//`.
+* Variables can be initialized as part of their declaration. If they are not explicitly initialized, they are implicitly initialized to `0` for numeric types and to an empty string for strings.
+* `+` concatenates strings.
+* `:=` is used for *short variable declaration*---it can declare one or more variables and give them appropriate types based on the initializer values.
+* `i++` adds `1` to `i`. This is a statement, and not an expression, thus `j = i++` is illegal.
+
+### `for` loops
+
+#### Traditional
+
+The `for` loop is *the only loop statement in Go*. One of its forms is
+```go
+for initialization; condition; post {
+	// zero or more statements
+}
+```
+For example:
+```go
+sum := 0
+for i := 0; i < 10; i++ {
+	sum += i
+}
+fmt.Println(sum)
+```
+* In the `for` loop, the opening brace must be on the same line as the `post` condition.
+* `initialization` statement is executed before the loop starts.
+* `condition` is a boolean expression evaluated at the beginning of each iteration.
+* `post` statement is executed after the body of the loop, then the condition is evaluated again.
+* The loop ends when the condition becomes false.
+* Any of the `initialization`, `condition` or `post` can be omitted
+* If neither of the last two are included, the semicolons can be omitted as well.
+
+`while` loop can be constructed using `for` loop:
+```go
+// a traditional "while" loop
+for condition {
+	// ...
+}
+```
+
+Similarly, and infinite loop can be constructed by omitting `condition` entirely:
+```go
+// a traditional infinite loop
+for {
+	// ...
+}
+```
+Such loop could still be terminated using `break` or `return` statement, for example.
+
+#### `range`
+
+A different form of the `for` loop can iterate over a *range* of values. For example:
+```go
+nums := []int{2, 0, 5, 2}
+for idx, val := nums {
+	fmt.Println("index:", idx)
+	fmt.Println("value", val)
+}
+fmt.Println(s)
+```
+* In each iteration, `range` produce two values: the index and the value of the element at that index.
+* If one does not need an index, it can be assigned to *blank identifier*, `_`. This identifier can be used whenever syntax requires a variable name, but the program logic does not.
+* If one does not need the value, it can be omitted (together with the comma)
+
+### Declaring string variables
+
+Here are four equivalent ways to declare a string variable:
+```go
+s := ""
+var s string
+var s = ""
+var s string = ""
+```
+* The first one is the most compact but may only be used within a function, not for package-level variables.
+* The second one relies on default initialization to an empty string.
+* The third one is rarely used, except when declaring multiple variables.
+* The fourth one is explicit about the variable's type, which is redundant. 
+
+In practice, one should generally use either the first or the second form, with explicit initialization to say that the initial value is important and implicit initialization when it is not important. 
