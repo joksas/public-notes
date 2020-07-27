@@ -64,7 +64,7 @@ Such loop could still be terminated using `break` or `return` statement, for exa
 A different form of the `for` loop can iterate over a *range* of values. For example:
 ```go
 nums := []int{2, 0, 5, 2}
-for idx, val := nums {
+for idx, val := range nums {
 	fmt.Println("index:", idx)
 	fmt.Println("value", val)
 }
