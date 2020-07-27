@@ -11,7 +11,7 @@ These are my notes for the textbook "The Go Programming Language" by Alan Donova
 ## Section 1.2
 
 * Comments begin with `//`.
-* Variables can be initialized as part of their declaration. If they are not explicitly initialized, they are implicitly initialized to `0` for numeric types and to an empty string for strings.
+* Variables can be initialized as part of their declaration. If they are not explicitly initialized, they are implicitly initialized to *zero value*, i.e. `0` for numeric types and to an empty string for strings.
 * `+` concatenates strings.
 * `:=` is used for *short variable declaration*---it can declare one or more variables and give them appropriate types based on the initializer values.
 * `i++` adds `1` to `i`. This is a statement, and not an expression, thus `j = i++` is illegal.
@@ -57,7 +57,7 @@ for {
 	// ...
 }
 ```
-Such loop could still be terminated using `break` or `return` statement, for example.
+Such a loop could still be terminated using `break` or `return` statement, for example.
 
 #### `range`
 
@@ -89,3 +89,75 @@ var s string = ""
 * The fourth one is explicit about the variable's type, which is redundant. 
 
 In practice, one should generally use either the first or the second form, with explicit initialization to say that the initial value is important and implicit initialization when it is not important. 
+
+## Section 1.3
+
+Functions and other package-level entities may be declared in any order.
+
+### `map`
+
+A `map` holds a set of key/value pairs. The key be of any type whose values can be compared with `==`. In the following example, function `make` creates a new empty map, in which the keys are strings and the values are `int`s:
+```go
+my_map := make(map[string]int)
+```
+
+One can iterate over the `map` using range:
+
+```go
+for key, val : = range my_map {
+	// ...
+}
+```
+
+The order of map iteration is not specified, but in practice it is random. This is intentional as it prevents programs from relying on any particular order where none is guaranteed.
+
+`map`s are references to the data structures created by `make`. When a `map` is passed to a function, that function receives a copy of the reference. Any changes the function makes to the data structure will be visible through the caller function's `map` reference too.
+
+### Scanners
+
+One can create a scanner that reads from the program's standard input with the following command:
+```go
+input := bufio.NewScanner(os.Stdin)
+```
+
+With each call of `input.Scan()`, it reads the next line and removes the newline character from the end of the line. The result is retrieved by calling `input.Text()`. The `Scan` function return `true` when there is a line and `false` when there is not. 
+
+Additionally, one can read files. With `os.Open(file)` one can open the file: 
+```go
+for _, arg := range files {
+	f, err := os.Open(arg)
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error: %v\n", err)
+		continue
+	}
+	doThings(f)
+	f.Close()
+}
+```
+
+`f`, the first return value of `os.Open` is an open file that can be read by the `Scanner`. `err`, the second return value of `os.Open` is a value of the built-in error type. If `err == nil`, it means that the file was opened successfully. After the file is read, `Close` closes the file and releases any resources.
+
+Finally, one can also read the entire input into memory at once and then manipulate it accordingly. This is done with the following piece of code:
+```go
+data, err := ioutil.ReadFile(filename)
+```
+
+### `Printf`
+
+`fmt.Printf` allows to produce formatted output. Its first argument is a format string that specifies how the subsequent list of arguments should be formatted. The format of each argument is determined by a conversion character (a letter that follows a percent sign). For example, `%d` can format an integer using decimal notation. The following are some of the conversions:
+
+| Conversion character |                       Displays argument as                      |
+|:--------------------:|:---------------------------------------------------------------:|
+| `%d`                 | Integer (base 10)                                               |
+| `%b`                 | Integer (base 2)                                                |
+| `%f`                 | Floating-point (no exponent)                                    |
+| `%e`                 | Floating-point (with exponent)                                  |
+| `%g`                 | Floating-point (`%e` for large exponents, `%f` otherwise)       |
+| `%t`                 | Boolean                                                         |
+| `%s`                 | String                                                          |
+| `%c`                 | Character (represented by the corresponding Unicode code point) |
+| `%q`                 | Quoted string or character                                      |
+| `%v`                 | The value in a default (natural) format                         |
+| `%%`                 | Literal percent sign                                            |
+
+Additionally, there are *escape sequences* `\n` and `\t` for newline and tab, respectively. `Printf` does not write newline by default and so (by convention) don't any formatting functions whose names end in `f`, e.g. `log.Printf` or `fmt.Errorf`. Those functions whose names end in `ln` follow the logic of `Println`, i.e. formatting their arguments as if by `%v`, followed by `\n`.
