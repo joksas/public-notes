@@ -1,0 +1,7 @@
+---
+title: "The Go Programming Language"
+---
+
+These are my notes for the textbook "The Go Programming Language" by Alan Donovan and Brian Kernighan.
+
+\clearpage
