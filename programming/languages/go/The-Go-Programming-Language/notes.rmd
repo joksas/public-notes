@@ -190,3 +190,27 @@ const (
 
 * Function `io.Copy(dst, src)` reads from `src` and writes to `dst`. One can use it for copying contents to `os.Stdout`, for example.
 * Functions `strings.HasPrefix(s, prefix)` tests whether string `s` begins with `prefix`.
+
+
+## Section 1.6
+
+A *goroutine* is a concurrent function execution. This can be initiated in the following way:
+```go
+go myFunction(arg1, arg2) // start a goroutine
+```
+The function `main` runs in a goroutine as well.
+
+A *channel* is a communication mechanism that allows one goroutine to pass values of *a specified type* to another goroutine.  To make a channel for strings:
+```go
+ch := make(chan string)
+```
+It can be received by a function:
+```go
+func myFunction(myChannel chan<- string) {
+	myChannel <- "I am sending this message through myChannel to the caller function"
+}
+```
+In the caller function, one can receive from the channel:
+```go
+fmt.Println(<-ch)
+```
