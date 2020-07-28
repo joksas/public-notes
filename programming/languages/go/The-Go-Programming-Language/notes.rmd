@@ -185,3 +185,8 @@ const (
 	mySecondConstant = 42
 )
 ```
+
+## Section 1.5
+
+* Function `io.Copy(dst, src)` reads from `src` and writes to `dst`. One can use it for copying contents to `os.Stdout`, for example.
+* Functions `strings.HasPrefix(s, prefix)` tests whether string `s` begins with `prefix`.
