@@ -161,3 +161,27 @@ data, err := ioutil.ReadFile(filename)
 | `%%`                 | Literal percent sign                                            |
 
 Additionally, there are *escape sequences* `\n` and `\t` for newline and tab, respectively. `Printf` does not write newline by default and so (by convention) don't any formatting functions whose names end in `f`, e.g. `log.Printf` or `fmt.Errorf`. Those functions whose names end in `ln` follow the logic of `Println`, i.e. formatting their arguments as if by `%v`, followed by `\n`.
+
+## Section 1.4
+
+### Importing packages
+
+If we import a package whose path has multiple components, for example `image/color` and `image/gif`, in the following way
+```go
+import (
+	"image"
+	"image/color"
+	"image/gif"
+)
+```
+then we refer to the package with a name that comes from the last component. For example, `color.White` belongs to `image/color`, while `gif.GIF` belongs to `image/gif`.
+
+### Constants
+
+`const` declaration gives names to constants, values that are fixed at compile time. `const`s can be declared at package level (in which case their names would be visible throughout the package) or within a function. The value of a `const` must be a number, string or boolean. One can declare `const`s in the following way:
+```go
+const (
+	myFirstConstant = 3.14
+	mySecondConstant = 42
+)
+```
