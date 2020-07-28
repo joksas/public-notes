@@ -1,0 +1,5 @@
+0.42s     3659  https://yoshke.org
+0.52s    11298  https://golang.org
+0.93s     7522  https://godoc.org
+1.58s     4154  http://gopl.io
+1.58s elapsed
