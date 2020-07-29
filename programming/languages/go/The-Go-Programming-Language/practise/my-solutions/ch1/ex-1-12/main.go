@@ -34,11 +34,11 @@ func main() {
 
 func handler(w http.ResponseWriter, r *http.Request) {
 	path := r.URL.RequestURI()
-	good_format := false
+	goodFormat := false
 	if len(path) >= 9 {
 		if path[:9] == "/?cycles=" {
 			if len(path) > 9 {
-				good_format = true
+				goodFormat = true
 				cyclesStr := path[9:]
 				cycles, err := strconv.ParseFloat(cyclesStr, 64)
 				if err != nil {
@@ -53,7 +53,7 @@ func handler(w http.ResponseWriter, r *http.Request) {
 			}
 		}
 	}
-	if good_format == false {
+	if goodFormat == false {
 		fmt.Fprintf(w, "The URL should be \"http://localhost:8000/?cycles=num_cycles\" where num_cycles is the number of cycles.")
 	}
 }
