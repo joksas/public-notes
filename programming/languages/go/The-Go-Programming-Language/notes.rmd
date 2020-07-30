@@ -214,3 +214,38 @@ In the caller function, one can receive from the channel:
 ```go
 fmt.Println(<-ch)
 ```
+
+## Section 1.8
+
+### Switches
+
+Go also implements switches. For example, `switch` can operate on an operand:
+```go
+switch coinFlip() {
+case "heads":
+	heads++
+case "tails":
+	tails++
+default:
+	fmt.Println("Landed on edege.")
+}
+```
+or it can simply list cases, each of which is a boolean expression (equivalent to `switch true`):
+```go
+func sumInt(x int, y int) {
+	switch {
+	case x + y < 0:
+		fmt.Println("The sum is negative")
+	default:
+		fmt.Println("The sum is zero")
+	case x + y > 0:
+		fmt.Println("The sum is positive")
+	}
+}
+```
+
+`case`s are evaluated from top to bottom and the first matching is executed. The optional `default` is executed if *none* of the other cases match; it may be placed anywhere as seen in the example above. Cases do not fall through from one to the next one, though `fallthrough` statement can be used to override this behavior.
+
+### Comments
+
+As seen before, comments can be written with a pair of forward slashes (`//`). One can also use `/*` for the start of a block comment and `*/` for its end. However, for documenting code `//` are preferred.
