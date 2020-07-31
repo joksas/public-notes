@@ -249,3 +249,17 @@ func sumInt(x int, y int) {
 ### Comments
 
 As seen before, comments can be written with a pair of forward slashes (`//`). One can also use `/*` for the start of a block comment and `*/` for its end. However, for documenting code `//` are preferred.
+
+# Chapter 2
+
+## Section 2.1
+
+In Go, the names of functions, variables, constants, types, statement labels and packages start with a letter or an underscore and may be followed by any number of additional letters, digits and underscores. The names can be set to anything, except for 25 keywords like `func` or `if`. Additionally, there are some predeclared names like `int` or `true` which can be redeclared (though that should be avoided in most cases).
+
+If an entity is declared within a function, it is local to that function. If declared outside of a function, it is visible in all files of the package to which it belongs.
+
+*The case of the first letter of name determines its visibility across package boundaries.* If a name begins with an uppercase letter, it is exported---it is visible outside of its own package and may be used by other parts of the program that imports that package, e.g. `fmt.Println()`. Package names are always in lowercase.
+
+There is no limit on name length, but by convention shorter names are preferred in Go. Generally, the larger the scope of a name, the longer and more meaningful it should be.
+
+In Go, camelCase is preferred, e.g. `MyFirstFunction()` and `mySecondFunction()` instead of `My_first_function()` and `my_second_function()`. The letters of acronyms and initialisms are always rendered in the same case, i.e. either only lowercase or only uppercase. For example, we would use `ufoGenerate()`, `UFOGenerate()`, `generateUFO()` or `GenerateUFO()`, but not `generateUfo()`.
