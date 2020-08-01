@@ -282,3 +282,72 @@ func kmPerHToMPerS(kmPerH float64) float64 {
 	return kmPerH * 1000 / 3600
 }
 ```
+
+## Section 2.3
+
+A `var` declaration creates a variable of a particular type, attaches a name to it, and sets its initial value. In Go, there is no such thing as uninitialized variables. Go uses the zero-value mechanism to ensure that every variable holds a well-defined value of its type.
+
+Each `var` declaration has the general form
+```go
+var name type = expression
+```
+
+Either `type` or `= expression` may be omitted, but not both because the variable has to be initialized:
+
+* if `type` is omitted, the type is deduced from the initializer expression.
+* if `= expression` is omitted, the initial value is set to the zero value of the specified type.
+
+The table below lists zero values for various types.
+
+| Type                                                       | Zero value                           |
+|------------------------------------------------------------|--------------------------------------|
+| All integer types                                          | `0`                                  |
+| All float types                                            | `0.0`                                |
+| Boolean                                                    | `false`                              |
+| Strings                                                    | `""`                                 |
+| Interfaces, slices, channels, maps, pointers and functions | `nil`                                |
+| Array or struct                                            | Zero value for each element or field |
+
+Go also allows to initialize more than one variable at a time. By omitting the type one can also declare variable with different types:
+```go 
+var a, b, c float64					// float64, float64, float64
+var d, e, f = 5, 3.14, false		// int, float64, bool
+```
+
+A set of variables can also be initialized by calling a function that returns multiple values:
+```go
+var f, err = os.Open(name)	// a file and an error are returned
+```
+
+### Subsection 2.3.1
+
+Inside a function, one may also use **short variable declaration** to declare and initialize variables. It has the following form:
+```go
+name := expression
+```
+
+The type of `name` is determined by the type of `expression`. Here is a couple of examples:
+```go
+anim := gif.GIF{LoopCount: nframes}
+t := 0.0
+```
+
+Short variable declarations are used to declare most of local variables. `var` declaration is usually reserved for local variables that need an explicit type that differs from that of the initializer expression or when the variable will be assigned a value later and its initial value is not important.
+
+As with `var` declarations, multiple variables can be declared using short variable declaration:
+```go
+i, j := 0, 1
+```
+but such declarations should be reserved only when they improve readability.
+
+In Go, `:=` is declaration and `=` is assignment.
+
+As with `var` declarations, short variable declaration may be used for calls to functions that return two or more values. However, short variable declaration does not necessarily declare all the variables on the LHS. If some of them were already declared in the same lexical block, then the short variable declaration acts like assignment to those variables. A short variable declaration must declare at least one new variable though.
+```go
+f, err := os.Open(infile)
+// ...
+out, err := os.Create(outfile) // no error because `out` newly declared
+// ...
+f, err := os.Create(outfile) // compile error: no new variables
+```
+One would have to use an ordinary assignment for the third statement.
