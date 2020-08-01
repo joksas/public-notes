@@ -263,3 +263,22 @@ If an entity is declared within a function, it is local to that function. If dec
 There is no limit on name length, but by convention shorter names are preferred in Go. Generally, the larger the scope of a name, the longer and more meaningful it should be.
 
 In Go, camelCase is preferred, e.g. `MyFirstFunction()` and `mySecondFunction()` instead of `My_first_function()` and `my_second_function()`. The letters of acronyms and initialisms are always rendered in the same case, i.e. either only lowercase or only uppercase. For example, we would use `ufoGenerate()`, `UFOGenerate()`, `generateUFO()` or `GenerateUFO()`, but not `generateUfo()`.
+
+## Section 2.2
+
+A **declaration** names a program entity and specifies some or all of its properties. There are four major types of declarations: `var`, `const`, `type` and `func`.
+
+A Go program is stored in or more files, all with extension `.go`. Each file begins with a package declaration that states which package the file is part of, e.g.:
+```go
+package main
+```
+After that follow `import` declarations and then package-level declarations of types, variables and functions in any order.
+
+### Functions
+
+A function declaration has a name, a list of parameters, an optional list of results and the function body. The result list is omitted if the function does not return anything. The function execution begins with the first statement and ends with the first encounter of a `return` statement or when the end of a function is reached that has no results. For example:
+```go
+func kmPerHToMPerS(kmPerH float64) float64 {
+	return kmPerH * 1000 / 3600
+}
+```
