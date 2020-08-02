@@ -372,3 +372,15 @@ fmt.Println(x) // output: 2
 Each component of a variable of aggregate type (struct or array) is also a variable and thus has an address too.
 
 The zero value of a pointer of any type is `nil`.
+
+### Subsection 2.3.3
+
+Built-in function `new` can be used to create variables as well. Specifically, expression
+```go
+new(type)
+```
+allows to create an unnamed variable of type `type`. This expression initializes the variable to the zero value of `type` and returns its address, which is a value of type `*type`.
+
+The only difference with `new` is that one does not need to create a variable name, thus this feature is just a syntactic convenience.
+
+Each call to `new` returns a distinct variable with a unique address. The only exception may be variables whose type carries no information and is thus of size zero, e.g. `struct{}` or `[0]int`.
