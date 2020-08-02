@@ -351,3 +351,24 @@ out, err := os.Create(outfile) // no error because `out` newly declared
 f, err := os.Create(outfile) // compile error: no new variables
 ```
 One would have to use an ordinary assignment for the third statement.
+
+### Subsection 2.3.2
+
+A **variable** is a piece of storage containing a value. A **pointer** is the address of a variable, or simply the location where a value is stored.
+
+If we declare a variable as
+```go
+var x int
+```
+then the expression `&x` yields a pointer to an integer variable. It is a value of type `*int`, which is pronounced as "pointer to `int`". If this pointer is called `p`, then we say "`p` points to `x`". The variable to which `p` points is written `*p`. It can even used in assignment and thus update the variable:
+```go
+x := 1
+p := &x
+fmt.Println(*p) // output: 1
+*p = 2
+fmt.Println(x) // output: 2
+```
+
+Each component of a variable of aggregate type (struct or array) is also a variable and thus has an address too.
+
+The zero value of a pointer of any type is `nil`.
