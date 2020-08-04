@@ -411,3 +411,18 @@ y := 0
 x++ // `x` is now equal to `1`
 y-- // `y` is now equal to `-1`
 ```
+
+### Subsection 2.4.1
+
+**Tuple assignment** allows several variables to be assigned values at once. All of the RHS expressions are evaluated before any of the variables are updated. This makes this feature useful when variables appear on both sides of the assignment; it can often eliminate the need to create temporary variables. For example, if we wanted to swap the values of two variables we could do
+```go
+x, y = y, x
+```
+instead of
+```go
+temp := x
+x = y
+y = temp
+```
+
+Some expressions, such as calls to functions with multiple results, produce several values; tuple assignments can be used there too.
