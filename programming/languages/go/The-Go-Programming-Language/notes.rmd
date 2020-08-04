@@ -384,3 +384,30 @@ allows to create an unnamed variable of type `type`. This expression initializes
 The only difference with `new` is that one does not need to create a variable name, thus this feature is just a syntactic convenience.
 
 Each call to `new` returns a distinct variable with a unique address. The only exception may be variables whose type carries no information and is thus of size zero, e.g. `struct{}` or `[0]int`.
+
+## Section 2.4
+
+The value of a variable is updated by an assignment statement. It has the following form:
+```go
+variable = expression
+```
+For example:
+```go
+x = 1
+x = 2
+x = x*5
+```
+
+Each of the arithmetic and bitwise binary operators has a corresponding **assignment operator**. For example:
+```go
+x *= 2 // equivalent to `x = x*2`
+y -= 10 // equivalent to `y = y - 10`
+```
+
+Additionally, numeric variables can be incremented and decremented using `++` and `--` statements:
+```go
+x := 0
+y := 0
+x++ // `x` is now equal to `1`
+y-- // `y` is now equal to `-1`
+```
