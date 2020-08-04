@@ -446,3 +446,50 @@ colors[1] = "blue"
 colors[2] = "green"
 colors[3] = "yellow"
 ```
+
+## Section 2.5
+
+Type of a variable or expression characterizes the values it may take on. However, there are often variables that share the same representation but signify very different concepts. For example, `float64` could be used to represent both speed in kilometers per hour and speed in meters per second.
+
+`type` declaration defines **named type** that has the same **underlying type** as an existing type. Named types allow to separate different and possibly incompatible uses of the underlying type. The declaration has the following structure:
+```go
+type name underlying_type
+```
+
+For example, we might use type declarations to differentiate between two units of speed, so that they could not be combined in expressions without a proper conversion:
+```go
+package speedconv
+
+import "fmt"
+
+type MPerS float64
+type KmPerH float64
+
+const (
+	HumanWalkSpeed MPerS = 1
+	HumanRunSpeed MPerS = 10
+)
+
+func MPSToKPH(speedMPS MPerS) KmPerH {
+	return KmPerH(speedMPS * 3600 / 1000)
+}
+
+func KPHToMPS(speedKPH KmPerH) MPerS {
+	return MPerS(speedKPH * 1000 / 3600)
+}
+```
+here `KmPerH()` and `MPerS()` are conversions, not function calls. These do not change the value or representation in any way, just the named type.
+
+For every type `T` there is a corresponding **conversion operation** `T(x)` that converts the value `x` to type `T`. Such conversion is allowed if both `x` and `T` have the same underlying type or if both are unnamed pointer types that point to variables of the same underlying type.
+
+Conversions are also allowed between numeric types and between string and some slice types. However, these conversions may change the representation of the value. For example, converting floating point number to an integer will discard any fractional part.
+
+The underlying type of a named type determines the intrinsic operations it supports. Comparison operators can be used to compare a value of a named type to another value of the same type, or to a value of an unnamed type with the same underlying type.
+
+Named types also allow to define new behaviors for values of that type. These are expressed through functions associated with the type called type's **methods**. In these methods, parameter of the named type comes before the name of the method. For example:
+```go
+func (speedKPH KmPerH) String() string {
+	return fmt.Sprintf("%g m/s", speedKPH)
+}
+```
+`String()` method is often defined because it controls how values of the type appear when printed as a string by the `fmt` package.
