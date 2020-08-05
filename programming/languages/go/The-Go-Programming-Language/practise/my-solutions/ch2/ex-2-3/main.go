@@ -1,31 +1,20 @@
-// Copyright © 2016 Alan A. A. Donovan & Brian W. Kernighan.
-// License: https://creativecommons.org/licenses/by-nc-sa/4.0/
+package main
 
-// See page 45.
+import (
+	"fmt"
+	"os"
+	"popcount"
+	"strconv"
+)
 
-// (Package doc comment intentionally malformed to demonstrate golint.)
-//!+
-package popcount
-
-// pc[i] is the population count of i.
-var pc [256]byte
-
-func init() {
-	for i := range pc {
-		pc[i] = pc[i/2] + byte(i&1)
+func main() {
+	for _, arg := range os.Args[1:] {
+		number, err := strconv.ParseUint(arg, 10, 64)
+		if err != nil {
+			fmt.Fprintf(os.Stderr, "%v\n", err)
+			os.Exit(1)
+		}
+		popCount := popcount.PopCount(number)
+		fmt.Printf("Number: %d, pop-count: %d\n", number, popCount)
 	}
 }
-
-// PopCount returns the population count (number of set bits) of x.
-func PopCount(x uint64) int {
-	return int(pc[byte(x>>(0*8))] +
-		pc[byte(x>>(1*8))] +
-		pc[byte(x>>(2*8))] +
-		pc[byte(x>>(3*8))] +
-		pc[byte(x>>(4*8))] +
-		pc[byte(x>>(5*8))] +
-		pc[byte(x>>(6*8))] +
-		pc[byte(x>>(7*8))])
-}
-
-//!-
