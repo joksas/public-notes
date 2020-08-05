@@ -1,11 +1,11 @@
 package main
 
 import (
+	"conv/lenconv"
+	"conv/tempconv"
 	"fmt"
-	"lenconv"
 	"os"
 	"strconv"
-	"tempconv"
 )
 
 func main() {
