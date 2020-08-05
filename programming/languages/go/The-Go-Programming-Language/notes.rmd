@@ -493,3 +493,23 @@ func (speedKPH KmPerH) String() string {
 }
 ```
 `String()` method is often defined because it controls how values of the type appear when printed as a string by the `fmt` package.
+
+## Section 2.6
+
+Package initialization begins by firstly initializing package-level variables in the order in which they are declared, except when dependencies need to be resolved:
+```go
+var a = 5 // initialized first
+var b = c + 1 // initialized third 
+var c = 3 // initialized second 
+```
+
+In Go, one can use any number of `init` functions to perform some actions whenever the program starts. They are executed in the order in which they are declared:
+```go
+func init() {
+	fmt.Println("Called first.")
+}
+
+func init() {
+	fmt.Println("Called second.")
+}
+```
