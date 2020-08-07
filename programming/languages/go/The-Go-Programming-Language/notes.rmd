@@ -513,3 +513,116 @@ func init() {
 	fmt.Println("Called second.")
 }
 ```
+
+## Section 2.7
+
+The **scope** of a declaration is the part of the source code where a use of the declared name refers to that *declaration*.
+
+A **syntactic block** is a sequence of statements enclosed in *curly braces*, e.g. like in a body of a function of a loop. A name *declared* inside a syntactic block is not visible outside the block. More generally, we can define **lexical blocks** that are not necessarily surrounded by curly braces, but can still define scope. This expands the possible blocks to the **universe block**, **package block** and **file block**. Additionally there are lexical blocks for `for`, `if` and `switch` statements. One can also have simply curly braces without any special keyword.
+
+The following code
+```go
+x := 0
+fmt.Println(x)
+{
+    x = 1 // assignment changes the variable declared outside the block
+    fmt.Println(x)
+}
+fmt.Println(x)
+```
+produces the output
+```text
+0
+1
+1
+```
+
+On the other hand, the following code
+```go
+x := 0
+fmt.Println(x)
+{
+    x := 1 // a variable with the same name is declared inside the block 
+    fmt.Println(x) // this will refer to the declaration
+    // in the innermost enclosing lexical block
+}
+fmt.Println(x) // this will refer to the first declaration of `x` because it
+// does not have access to names declared inside lexical blocks it is not a part of
+```
+produces the output
+```text
+0
+1
+0
+```
+
+Again, not all lexical blocks are denoted by explicit brace-delimited sequences, some are implied. For example, `for` loop creates two lexical blocks: the explicit block for the body, and an implicit block that is created by declaring variables using the initialization clause. The scope of a variable declared within this implicit block is the condition, post-statement and the body of the loop. For example
+```go
+x := "hello"
+fmt.Println(x)
+for _, x := range x { // refers to `x` declared outside the loop
+	x := x + 'A' - 'a' // refers to `x` declared in the initialization clause 
+	fmt.Printf("%c", x) // refers to `x` declared in the line above
+}
+fmt.Println()
+fmt.Println(x) // refers to `x` declared outside the loop 
+```
+produces output
+```text
+hello
+HELLO
+hello
+```
+
+Similarly with `if` statements, the following code would produce three compile errors:
+```go
+if f, err := os.Open(fname); err != nil { // compile error: unused: f
+	return err
+}
+f.Stat() // compile error: undefined f
+f.Close() // compile error: undefined f
+```
+The way `f` and `err` are declared, they would only be accessible in the comparison statement and the body of `if`. One should instead rewrite it as
+```go
+f, err := os.Open(fname)
+if err !nil {
+	return err
+}
+f.Stat()
+f.Close()
+```
+One might also try doing the following:
+```go
+if f, err := os.Open(fname); err != nil {
+	return err
+} else {
+	// `f` and `err` are visible inside `else` too
+	f.Stat()
+	f.Close()
+}
+```
+but that is not a recommended practice---successful execution path should not be indented.
+
+Also, issues may occur with variables that are not used in the blocks they are declared, but should be used outside them. For example:
+```go
+var cwd string 
+
+func init() {
+	cwd, err := os.Getwd()
+	if err != nil {
+		log.Fatalf("%v", err)
+	}
+}
+```
+will result in compile error because `cwd` is not used inside the `init()` function. One can avoid this error by declaring `err` in a separate `var` declaration, and then assigning values to `cwd` and `err`, instead of declaring them:
+```go
+var cwd string 
+
+func init() {
+	var err error
+	cwd, err = os.Getwd()
+	if err != nil {
+		log.Fatalf("%v", err)
+	}
+}
+```
