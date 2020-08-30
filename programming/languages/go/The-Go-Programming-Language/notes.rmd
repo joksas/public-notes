@@ -626,3 +626,46 @@ func init() {
 	}
 }
 ```
+
+# Chapter 3
+
+Go'data types are divided into four categories:
+
+* basic types
+* aggregate types
+* reference types
+* interface types
+
+# Section 3.1
+
+Go provides both signed and unsigned integer arithmetic. There are four distinct sizes of integers:
+
+* 8 bits
+* 16 bits
+* 32 bits
+* 64 bits
+
+Signed integers of these sizes are implemented using types `int8`, `int16`, `int32` and `int64`, respectively. Similarly, unsigned versions are represented by types `uint8`, `uint16`, `uint32` and `uint32`, respectively.
+
+Additionally, there are two types called `int` and `uint`. Both of them have the same size---either 32 or 64 bits---but one does not must not make any assumptions because different compilers may make different choices even on identical platforms. These two types are often the natural or most efficient size.
+
+Type `rune` is a synonym for `int32`; it is usually used to indicate that a value is a Unicode code point. Two names can be used interchangeably. Similarly, type `byte` is a synonym for `uint8` and emphasizes that the value is a piece of raw data, and not a small numeric quantity.
+
+Finally, there exists type `uintptr`, whose width is not specified but is sufficient to hold all the bits of a pointer value. It is usually used only for low-level programming.
+
+Signed numbers are represented in 2's complement form and so the range of values that can be represented with an $n$-bit signed number is from $-2^{n-1}$ to $2^{n-1}-1$. Unsigned integers, on the other hand, use all bits to represent the value and so the range of values that can be represented with an $n$-bit unsigned number is from $0$ to $2^n-1$.
+
+Go's binary operators for arithmetic, logic and comparison are listed below in the order of decreasing precedence:
+```go
+*    /    %    <<   >>   &    &^
++    -    |    ^
+==   !=   <    <=   >    >=
+&&
+||
+```
+
+Operators at the same level associate to the left, so parentheses may be needed to override the order, e.g. `& (1 << 28)`.
+
+Each operator in the first two lines in the table above has a corresponding **assignment operator**, e.g. `+=` for `+`.
+
+`+`, `-`, `*`, and `/` can be applied to any integer, floating-point or complex number. However, remainder operator `%` can be applied only to integers. Its behavior for negative number varies across programming languages. In Go, the sign of the remainder is always the same as the sign of the dividend (numerator). If `/` is used with floating-point numbers, then the result is as expected, e.g. `10.0/4.0` is `2.5`. However, when used with integers, the result is truncated towards zero, e.g. `10/4` is `2`.
