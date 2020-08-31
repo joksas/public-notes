@@ -669,3 +669,44 @@ Operators at the same level associate to the left, so parentheses may be needed 
 Each operator in the first two lines in the table above has a corresponding **assignment operator**, e.g. `+=` for `+`.
 
 `+`, `-`, `*`, and `/` can be applied to any integer, floating-point or complex number. However, remainder operator `%` can be applied only to integers. Its behavior for negative number varies across programming languages. In Go, the sign of the remainder is always the same as the sign of the dividend (numerator). If `/` is used with floating-point numbers, then the result is as expected, e.g. `10.0/4.0` is `2.5`. However, when used with integers, the result is truncated towards zero, e.g. `10/4` is `2`.
+
+If the result of an operation has more bits than can be represented by the result type, it is said to **overflow**. The high-order bits that do not fit are silently discarded:
+```go
+var u uint8 = 255
+fmt.Println(u, u+1) // "255 0"
+
+var i int8 = 127
+fmt.Println(i, i+1) // "127 -128"
+```
+
+Although unsigned numbers might seem natural for things like lengths of arrays, they should usually be avoided because they might easily result in unintended behavior. Suppose we wanted to print an array in reverse order:
+```go
+myList := []string{"first", "second", "third"}
+for i := myLength(myList)-1; i >= 0; i-- {
+	fmt.Println(myList[i])
+}
+```
+
+If function `myLength()` returns a signed integer, the for loop will serve its function. However, if it returns an unsigned integer, the variable `i` will also be declared as unsigned integer. As a result, after `i` becomes `0` in one of the cycles, it would then change not to `-1` in the next cycle, but to $2^{64}-1$ (if the size of unsigned integer is 64 bits) instead. The loop would not terminate the way it was designed to. This is the reason why the built-in function `len()` in Go returns signed integers.
+
+Conversion operations can be used to combine variables of different types:
+```go
+var apples int32 = 1
+var oranges int64 = 2
+var letsCompare int = int(apples) + int(oranges)
+```
+
+When applied to floating-point types, integer conversions will discard fractional part, truncating toward zero:
+```go
+myFloat := 2.9
+myInt := int(myFloat)
+fmt.Println(myFloat, myInt) // "2.9, 2"
+```
+
+Octal numbers can be written by adding `0` in front of them, e.g. `0512`. Similarly, hexadecimal numbers can be written by adding `0x` or `0X` in front of them, e.g. `0x3ba1` or `0Xf76aa1`. Nowadays, octal numbers seem to be used only for file permissions on POSIX systems.
+
+Rune literals are written as a character within single quotes:
+```go
+asciiChar := 'a'
+unicodeChar := 'ą'
+```
