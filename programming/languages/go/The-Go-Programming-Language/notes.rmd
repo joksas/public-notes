@@ -636,7 +636,7 @@ Go'data types are divided into four categories:
 * reference types
 * interface types
 
-# Section 3.1
+## Section 3.1
 
 Go provides both signed and unsigned integer arithmetic. There are four distinct sizes of integers:
 
@@ -710,3 +710,8 @@ Rune literals are written as a character within single quotes:
 asciiChar := 'a'
 unicodeChar := 'ą'
 ```
+## Section 3.2
+
+Go uses two types of floating-point numbers, `float32` and `float64`. The former uses around 6 decimal digits of precision, while the latter around 15. Therefore, `float64` should be preferred in most cases because otherwise the errors can accumulate quickly.
+
+Digits may be omitted before the decimal point (`.5`) or after it (`2.`). Number can also be written using scientific notation, e.g. `1.67e-27`. Additionally, there exist values of `+Inf` and `-Inf`, as well as `NaN`.
