@@ -715,3 +715,10 @@ unicodeChar := 'ą'
 Go uses two types of floating-point numbers, `float32` and `float64`. The former uses around 6 decimal digits of precision, while the latter around 15. Therefore, `float64` should be preferred in most cases because otherwise the errors can accumulate quickly.
 
 Digits may be omitted before the decimal point (`.5`) or after it (`2.`). Number can also be written using scientific notation, e.g. `1.67e-27`. Additionally, there exist values of `+Inf` and `-Inf`, as well as `NaN`.
+
+## Section 3.2
+
+Go uses two types of complex numbers, `complex64` and `complex128`; they have real and imaginary components of types `float32` and `float64`, respectively. Function `complex()` creates a complex number from real and imaginary parts. Functions `real()` and `imag()` extract real and imaginary parts of a complex number, respectively. One can also simply define a compex number by adding an `i` after a decimal, for example:
+```go
+x := 4 + 3i
+```
