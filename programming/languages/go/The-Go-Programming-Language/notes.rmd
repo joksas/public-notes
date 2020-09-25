@@ -729,3 +729,11 @@ Type `bool` can take two values: `true` or `false`. `!` is logical negation, `&&
 ```go
 if s != "" && s[0] == 'x'
 ```
+
+## Section 3.5
+
+In strings, index operation `s[i]` returns $i$-th byte of string `s`, e.g. `119`, while substring operation `s[i:j]` returns a new string from $i$-th to $j$-th byte, not including the latter, e.g. `hello w`.
+
+A string value can be written inside double quotes. **Double-quoted string literals** can include escape sequences that begin with a backslash.
+
+A **raw string literal** is enclosed in backticks; its contents are taken literally, including backslashes, thus no escape sequences are processed.
