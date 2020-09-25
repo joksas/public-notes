@@ -722,3 +722,10 @@ Go uses two types of complex numbers, `complex64` and `complex128`; they have re
 ```go
 x := 4 + 3i
 ```
+
+## Section 3.4
+
+Type `bool` can take two values: `true` or `false`. `!` is logical negation, `&&` is logical AND and `||` is logical OR. Boolean values can be combined with several operators at a time, all of which have **shortcircuit behavior**: if the answer is already determined by left operand, the right operand is not evaluated. It makes it safe to write expressions like this, where `s` might be an empty string:
+```go
+if s != "" && s[0] == 'x'
+```
