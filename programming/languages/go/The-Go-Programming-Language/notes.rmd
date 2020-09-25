@@ -743,3 +743,51 @@ A **raw string literal** is enclosed in backticks; its contents are taken litera
 Constants are expressions whose value is known to the compiler; their evaluation occurs at compile time, and not at run time. The underlying type of any constant is a basic type: boolean, string or a number.
 
 In Go, one usually does not specify a type for constants. Untyped constants can be used in expressions where they are combined with variables of certain type; if that constant can be converted to that type, no error will be thrown. Untyped constants also have much higher precision of 256 bits.
+
+# Chapter 4
+
+There are four composite types in Go: arrays, slices, maps and structs. Arrays and structs are fixed size, while slices and maps are dynamic data structures that can grow as more values are added. Arrays are homogeneous (all of their elements have the same type) while structs are heterogeneous (their elements can have different types).
+
+## Section 4.1
+
+Arrays can be declared in the following way:
+```go
+var a [3]int
+```
+This creates an array `a` of size 3.
+
+We can also use **array literal** to initialize an array with specified values:
+```go
+var b [3]int = [3]int{1, 2, 3}
+```
+
+To remove redundancy of specifying the size of the array, we can use an ellipsis:
+```go
+c := [...]int{1, 2, 3}
+```
+
+Size of an array is part of its type, so, for example `[3]int` and `[4]int` are not equivalent.
+
+We can also specify pairs of indices and values:
+```go
+type Temp float64
+
+const (
+	Celcius Temp = iota
+	Farenheit
+	Kelvin
+)
+
+symbol := [...]string{Celcius: "°C", Farenheit: "°F", Kelvin: "K"}
+fmt.Println(Farenheit, symbol[Farenheit])
+```
+
+When the values are specified by the indices, these indices can appear in any order. If any are omitted, then they take the zero value of the type. For example,
+```go
+d := [...]int{99: 15}
+```
+defines array `d` of size 100. The first 99 elements are zero, and the last one has a value of `15`.
+
+Array type is comparable if that array's element type is comparable. In that case, the comparison is performed by comparing individual elements.
+
+In Go, if an array is passed as an argument to a function, it is received as a copy, i.e. it is not passed by reference. However, we can pass pointers to arrays and change them in this way. In Go, arrays are rarely used as function arguments or results; slices are usually used instead.
