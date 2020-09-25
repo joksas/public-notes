@@ -791,3 +791,34 @@ defines array `d` of size 100. The first 99 elements are zero, and the last one 
 Array type is comparable if that array's element type is comparable. In that case, the comparison is performed by comparing individual elements.
 
 In Go, if an array is passed as an argument to a function, it is received as a copy, i.e. it is not passed by reference. However, we can pass pointers to arrays and change them in this way. In Go, arrays are rarely used as function arguments or results; slices are usually used instead.
+
+## Section 4.2
+
+Slices are variable-length sequences. They are references to an **underlying array**. The **length** of a slice is the number of elements it contains. The **capacity** of a slice is the number of elements in the underlying array, counting from the first element in the slice.
+```go
+myArray := [6]string{"one", "two", "three", "four", "five", "six"}
+myFirstSlice := myArray[1:4]
+mySecondSlice := myArray[2:]
+fmt.Println(len(myFirstSlice), cap(myFirstSlice)) // "3 5"
+fmt.Println(len(mySecondSlice), cap(mySecondSlice)) // "4 4"
+```
+
+Slicing beyond capacity causes a panics, but slicing beyond length simply extends the slice.
+
+Slices do not store the data themselves, they are just pointers to the underlying arrays. As a result, they can be used to modify the elements of those underlying arrays.
+
+One can also use a **slice literal** to declare a slice:
+```go
+primes := []int{2, 3, 5, 7, 11, 13, 17, 19}
+```
+This implicitly creates an array of size 8 and yields a slice `primes` that points to it.
+
+Slices, unlike arrays, are not comparable with `==`; the comparison must be done manually.
+
+Function `make` creates an array and returns a slice of it; the array is accessible only through the returned slice.
+```go
+make([]T, len)
+make([]T, len, cap)
+```
+
+One can append a slice using function `append`. The first parameter of the function is the slice that needs to be appended. It is then followed by the values that will be appended. If the size of the underlying array (or, in other words, capacity of the slice) is too small, a new array is allocated. The returned slice points to that new array.
