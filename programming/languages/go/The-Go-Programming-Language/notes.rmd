@@ -737,3 +737,9 @@ In strings, index operation `s[i]` returns $i$-th byte of string `s`, e.g. `119`
 A string value can be written inside double quotes. **Double-quoted string literals** can include escape sequences that begin with a backslash.
 
 A **raw string literal** is enclosed in backticks; its contents are taken literally, including backslashes, thus no escape sequences are processed.
+
+## Section 3.6
+
+Constants are expressions whose value is known to the compiler; their evaluation occurs at compile time, and not at run time. The underlying type of any constant is a basic type: boolean, string or a number.
+
+In Go, one usually does not specify a type for constants. Untyped constants can be used in expressions where they are combined with variables of certain type; if that constant can be converted to that type, no error will be thrown. Untyped constants also have much higher precision of 256 bits.
