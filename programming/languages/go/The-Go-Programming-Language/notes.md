@@ -860,3 +860,75 @@ for key, value := range myMap {
   fmt.Println(key, value)
 }
 ```
+
+## Section 4.4
+
+A **struct** is an aggregate data type. Unlike arrays, structs can group values of arbitrary type. Each value is called a **field**.
+
+We can declare a struct type in the following way:
+```go
+type Student struct {
+  FirstName	string
+  LastName	string
+  ID		int
+}
+```
+If a struct field begins with a capital letter, it is exported.
+
+Once an instance of a struct type is declared, its fields can be accessed using dot notation:
+```
+var student1 Student
+student1.FirstName = "John"
+student1.LastName = "Doe"
+student1.ID = 144
+```
+
+We can also use pointers:
+```go
+var bestStudent *Student = &student1
+(*bestStudent).ID = 121
+```
+
+To avoid the cumbersome notation, Go allows to rewrite the last line as
+```go
+bestStudent.ID = 121
+```
+
+Values of a struct type can be specified using **struct literal** in two ways. It could be specified for every field, in the right order:
+```go
+type Position struct{
+  X, Y int
+}
+myPosition := Position{4, 3}
+```
+
+This may not be optimal as one needs to remember the order of the fields. Additionally, it increases fragility because the code might change and so the definition of the struct type might be different later. A better approach is to list some or all of the fields and their values:
+```go
+myPosition := Position{
+  X: 4
+}
+```
+
+In Go, for efficiency larger struct types are often passed using a pointer. That is also the only way to modify the argument of a function.
+
+If all the fields of a struct type are comparable, then two structs of that type can be compared using `==`.
+
+Go also lets to declare struct fields with no name. These fields are called **anonymous fields**. For example:
+```go
+type Person struct {
+  Name string
+  Age int
+}
+
+type Employee struct {
+  Person
+  Salary int
+}
+
+var employee Employee
+employee.Name = "Jane Doe" // equivalent to employee.Person.Name = "Jane Doe"
+employee.Age = 50 // equivalent to employee.Person.Age = 50
+employee.Salary = 65000
+```
+
+A **template** is a string that contains substrings enclosed in double curly brackets `{{...}}`; these are called **actions**. Inside actions, one can access variables and call functions. It provides an intuitive way of building things like HTML files (as evidenced by static website generator Hugo...).
