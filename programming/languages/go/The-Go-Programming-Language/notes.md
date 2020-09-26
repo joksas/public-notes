@@ -822,3 +822,41 @@ make([]T, len, cap)
 ```
 
 One can append a slice using function `append`. The first parameter of the function is the slice that needs to be appended. It is then followed by the values that will be appended. If the size of the underlying array (or, in other words, capacity of the slice) is too small, a new array is allocated. The returned slice points to that new array.
+
+## Section 4.3
+
+In Go, **maps** serve a very similar function as dictionaries do in Python. One of the key differences though is that in Go, values of a given map all have to have the same type.
+
+A map type is written as `map[K]V` where `K` is the type of the key and `V` is the type of the value. Keys must be comparable with `==`, while values do not have restrictions on their type.
+
+We can make a map and populate it in one of two ways. Using function `make`:
+```go
+wordcounts := make(map[string]int)
+wordcounts["hello"] = 2
+wordcounts["world"] = 1
+```
+or using a **map literal**:
+```go
+wordcounts := map[string]int{
+  "hello": 2
+  "world": 1
+}
+```
+
+Consequently, an empty map can be declared using map literal as `map[string]int{}`.
+
+One can access map elements using subscript notation, e.g. `wordcounts["hello"]`, and remove elements from it using `delete` function, e.g. `delete(wordcounts, "hello")`. If the key is not in the map, a zero value for its type is returned. To know if the element is non-existent, one can check the second return value when accessing an element. It is a boolean value that is `true` if the element is present:
+```go
+key = "hi"
+count, ok := wordcounts[key]
+if !ok {
+  fmt.Printf("\"%s\" is not a key in map `wordcounts`!", key)
+}
+```
+
+To cycle through all the elements of the map (which are not ordered), we can use `range`:
+```go
+for key, value := range myMap {
+  fmt.Println(key, value)
+}
+```
