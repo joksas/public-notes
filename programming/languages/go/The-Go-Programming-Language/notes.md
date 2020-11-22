@@ -954,3 +954,7 @@ func addB(x, y int) (z int) {
 In Go, there is no concept of default parameter values, thus the arguments cannot be specified by name---they must be provided in the order in which the parameters were declared.
 
 If a function declaration does not have a body, it indicates that the function is implemented in a language other than Go; it just specifies the function signature (parameters and returns).
+
+## Section 5.2
+
+Many programming languages have a *fixed-size* function call stacks. These impose a limit on the depth of recursion, so one may encounter **stack overflow** if the function is called recursively too many times. On the other hand, Go uses *variable-size* stack that starts smalls and grows as needed up to a limit on the order of a gigabyte. This makes it easier to deal with recursion and avoid stack overflow.
