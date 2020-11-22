@@ -932,3 +932,25 @@ employee.Salary = 65000
 ```
 
 A **template** is a string that contains substrings enclosed in double curly brackets `{{...}}`; these are called **actions**. Inside actions, one can access variables and call functions. It provides an intuitive way of building things like HTML files (as evidenced by static website generator Hugo...).
+
+# Chapter 5
+
+## Section 5.1
+
+Function declaration includes a **name**, a **list of parameters**, an optional **list of results**, and a **body**.
+
+The results may be named or not. If they are named, they automatically initialize a variable to the zero value of its type. Thus the two declarations below are equivalent:
+```go
+func addA(x, y int) int {
+  return x + y
+}
+
+func addB(x, y int) (z int) {
+  z = x + y
+  return
+}
+```
+
+In Go, there is no concept of default parameter values, thus the arguments cannot be specified by name---they must be provided in the order in which the parameters were declared.
+
+If a function declaration does not have a body, it indicates that the function is implemented in a language other than Go; it just specifies the function signature (parameters and returns).
