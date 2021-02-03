@@ -33,7 +33,7 @@ These are my notes for information theory based mostly on the textbook "Elements
 \end{align}
 
 **Chain rule** involving conditional entropy is
-\begin{equation}
+\begin{equation} \label{eq:chain-rule-conditional-entropy}
   H(X, Y) = H(X) + H(Y|X)
 \end{equation}
 
@@ -71,4 +71,31 @@ Also
 and
 \begin{equation}
   I(X; X) = H(X)
+\end{equation}
+
+## 2.5
+
+By repeatedly applying Equation \eqref{eq:chain-rule-conditional-entropy} we can show that
+\begin{equation} \label{eq:chain-rule-conditional-entropy-multivar}
+  H(X_1, X_2, \dots, X_n) = \sum_{i=1}^n H(X_i|X_{i-1}, \dots, X_1)
+\end{equation}
+
+We can define **conditional mutual information** as the reduction in the uncertainty of $X$ due to knowledge of $Y$ when $Z$ is given:
+\begin{equation}
+  I(X; Y | Z) \equiv H(X | Z) - H(X | Y, Z)
+\end{equation}
+
+Mutual information satisfies chain-rule-like relation, similar to the one with entropy in Equation \eqref{eq:chain-rule-conditional-entropy-multivar}:
+\begin{equation} \label{eq:chain-rule-conditional-mutual-information-multivar}
+  I(X_1, X_2, \dots, X_n ; Y) = \sum_{i=1}^n I(X_i ; Y |X_{i-1}, \dots, X_1)
+\end{equation}
+
+**Conditional relative entropy** is
+\begin{equation}
+  D( p(y|x) || q(y|x) ) \equiv \sum_{x} p(x) \sum_{y} p(y|x) \log \frac{p(y|x)}{q(y|x)}
+\end{equation}
+
+It can be shown that
+\begin{equation}
+  D( p(x, y) || q(x, y) ) = D( p(x) || q(x) ) + D( p(y|x) || q(y|x) )
 \end{equation}
