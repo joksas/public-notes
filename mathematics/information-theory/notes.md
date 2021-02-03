@@ -99,3 +99,65 @@ It can be shown that
 \begin{equation}
   D( p(x, y) || q(x, y) ) = D( p(x) || q(x) ) + D( p(y|x) || q(y|x) )
 \end{equation}
+
+## 2.6
+
+A function is **convex** if it lies above all its tangents, and **concave** if it lies below all its tangents. Alternatively, one may say that convex function lies below all its chords, and concave function lies above all its chords.
+
+The latter definition may be stated using a formula. For a function $f$ to be convex over an interval $(a, b)$, the following must hold for all $x_1, x_2 \in (a, b)$ and all $\lambda \in [0, 1]$:
+\begin{equation} \label{eq:convex-function-definition}
+  f(\lambda x_1 + (1-\lambda) x_2) \leq \lambda f(x_1) + (1-\lambda) f(x_2)
+\end{equation}
+
+The RHS of Equation \eqref{eq:convex-function-definition} represents the chord between points $(x_1, f(x_1))$ and $(x_2, f(x_2))$, and the LHS represents the value of the function $f$ when $x$ in the interval $[x_1, x_2]$ is plugged in.
+
+If function $f$ has a non-negative second derivative over an interval, then it is convex over that interval.
+
+**Jensen's inequality** states that
+\begin{equation}
+  E f(X) \geq f(EX)
+\end{equation}
+
+This inequality can be used to prove a number of theorems:
+\begin{equation}
+  D(p||q) \geq 0
+\end{equation}
+
+\begin{equation}
+  I(X; Y) \geq 0
+\end{equation}
+
+\begin{equation}
+  D( p(y|x) || q(y|x) ) \geq 0
+\end{equation}
+
+\begin{equation}
+  I( X; Y | Z) \geq 0
+\end{equation}
+
+Any random variable with range $\mathcal{X}$ has entropy no greater than $\log |\mathcal{X}|$, where $|\mathcal{X}|$ is the number of elements in $X$.
+
+We can show this by assuming that $u(x) = \frac{1}{|\mathcal{X}|}$ is uniform distribution:
+\begin{align}
+  D(p || u) &= \sum_{x} p(x) \log \frac{p(x)}{u(x)} \\
+	    &= \sum_{x} p(x) \log \left( p(x) |\mathcal{X}| \right) \\
+	    &= \sum_{x} p(x) \log (p(x)) + \sum_{x} p(x) \log |\mathcal{X}| \\
+	    &= -H(x) + \log |\mathcal{X}| \\
+	    &\geq 0 \\
+  \Rightarrow H(x) &\leq \log |\mathcal{X}|
+\end{align}
+
+Thus we get maximum entropy only when there is uniform distribution over the range $\mathcal{X}$.
+
+**Conditioning reduces entropy**:
+\begin{equation}
+  H(X|Y) \leq H(X)
+\end{equation}
+
+This essentially says that knowing another variable $Y$ can only reduce the uncertainty in $X$. However, that is the case only *on average*---we might have a situation where $H(X|Y=y) > H(X)$, however it will always be the case that $\sum\limits_{y} p(y) H(X|Y=y) \leq H(X)$.
+
+We can also prove that
+\begin{equation}
+  H(X_1, X_2, \dots, X_n) \leq \sum_{i=1}^{n} H(X_i)
+\end{equation}
+with equality if and only if $X_i$ are independent.
