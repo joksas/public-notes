@@ -27,9 +27,11 @@ These are my notes for information theory based mostly on the textbook "Elements
 
 **Conditional entropy** is
 \begin{align}
-  H(Y | X) &\equiv \sum_{x \in \mathcal{X}} p(x) H(Y | X = x) \\
-	   &= -\sum_{x \in \mathcal{X}} p(x) \sum_{y \in \mathcal{Y}} p(y|x) \log p(y|x) \\
-	   &= -\sum_{x \in \mathcal{X}} \sum_{y \in \mathcal{Y}} p(x, y) \log p(y|x)
+  \begin{split}
+    H(Y | X) &\equiv \sum_{x \in \mathcal{X}} p(x) H(Y | X = x) \\
+	     &= -\sum_{x \in \mathcal{X}} p(x) \sum_{y \in \mathcal{Y}} p(y|x) \log p(y|x) \\
+	     &= -\sum_{x \in \mathcal{X}} \sum_{y \in \mathcal{Y}} p(x, y) \log p(y|x)
+  \end{split}
 \end{align}
 
 **Chain rule** involving conditional entropy is
@@ -41,8 +43,10 @@ These are my notes for information theory based mostly on the textbook "Elements
 
 **Relative entropy** or **Kullback-Leibler distance** is
 \begin{align}
-  D(p || q) &\equiv \sum_{x \in \mathcal{X}} p(x) \log \frac{p(x)}{q(x)} \\
-	    &= E_p \log \frac{p(X)}{q(X)}
+  \begin{split}
+    D(p || q) &\equiv \sum_{x \in \mathcal{X}} p(x) \log \frac{p(x)}{q(x)} \\
+	      &= E_p \log \frac{p(X)}{q(X)}
+  \end{split}
 \end{align}
 
 * Relative entropy is a measure of the distance between two distributions. If we knew distribution $p$, we could construct code with average description length $H(p)$.
@@ -139,12 +143,14 @@ Any random variable with range $\mathcal{X}$ has entropy no greater than $\log |
 
 We can show this by assuming that $u(x) = \frac{1}{|\mathcal{X}|}$ is uniform distribution:
 \begin{align}
-  D(p || u) &= \sum_{x} p(x) \log \frac{p(x)}{u(x)} \\
-	    &= \sum_{x} p(x) \log \left( p(x) |\mathcal{X}| \right) \\
-	    &= \sum_{x} p(x) \log (p(x)) + \sum_{x} p(x) \log |\mathcal{X}| \\
-	    &= -H(x) + \log |\mathcal{X}| \\
-	    &\geq 0 \\
-  \Rightarrow H(x) &\leq \log |\mathcal{X}|
+  \begin{split}
+    D(p || u) &= \sum_{x} p(x) \log \frac{p(x)}{u(x)} \\
+	      &= \sum_{x} p(x) \log \left( p(x) |\mathcal{X}| \right) \\
+	      &= \sum_{x} p(x) \log (p(x)) + \sum_{x} p(x) \log |\mathcal{X}| \\
+	      &= -H(x) + \log |\mathcal{X}| \\
+	      &\geq 0 \\
+    \Rightarrow H(x) &\leq \log |\mathcal{X}|
+  \end{split}
 \end{align}
 
 Thus we get maximum entropy only when there is uniform distribution over the range $\mathcal{X}$.
@@ -161,3 +167,39 @@ We can also prove that
   H(X_1, X_2, \dots, X_n) \leq \sum_{i=1}^{n} H(X_i)
 \end{equation}
 with equality if and only if $X_i$ are independent.
+
+## 2.7
+
+**Log sum inequality** states that for non-negative numbers $a_1, a_2, \dots, a_n$ and $b_1, b_2, \dots, b_n$, we have
+\begin{equation} \label{eq:log-sum-inequality}
+  \sum_{i=1}^{n} a_i \log \frac{a_i}{b_i} \geq a \log \frac{a}{b}
+\end{equation}
+where $a \equiv \sum\limits_{i=1}^{n} a_i$ and $b \equiv \sum\limits_{i=1}^{n} b_i$.
+
+We can prove this by introducing function $f(x)= x \log x$ (which is convex since $f''(x) > 0$):
+\begin{align}
+  \begin{split}
+    \sum_{i=1}^{n} a_i \log \frac{a_i}{b_i} &= \sum_{i=1}^{n} b_i f \left( \frac{a_i}{b_i} \right) \\
+					    &= b \sum_{i=1}^{n} \frac{b_i}{b} f \left( \frac{a_i}{b_i} \right) \\
+					    &\geq b f \left( \sum_{i=1}^{n} \frac{b_i}{b} \frac{a_i}{b_i} \right) \\
+					    &= b f \left( \frac{1}{b} \sum_{i=1}^{n} a_i \right) \\
+					    &= b f \left( \frac{a}{b} \right) \\
+					    &= a \log \frac{a}{b}
+  \end{split}
+\end{align}
+
+We can use Equation \ref{eq:log-sum-inequality} to prove a number of theorems in information theory. For example, we can use it to show that relative entropy is always non-negative:
+\begin{align}
+  \begin{split}
+    D(p||q) &= \sum_{x \in \mathcal{X}} p(x) \log \frac{p(x)}{q(x)} \\
+	    &\geq \sum_{x \in \mathcal{X}} p(x) \log \frac{\sum\limits_{x \in \mathcal{X}} p(x)}{\sum\limits_{x \in \mathcal{X}} q(x)} \\
+	    &= 1 \cdot \log \frac{1}{1} \\
+	    &= 0
+  \end{split}
+\end{align}
+
+We can also show that **relative entropy** $D(p||q)$ **is convex**.
+
+By extension, because entropy $H(p)$ can be expressed as $\log |\mathcal{X}| - D(p||u)$, we deduce that **entropy** $H(p)$ **is a concave function**.
+
+Suppose that $(X, Y) \sim p(x, y) = p(y|x) p(x)$. Mutual information $I(X; Y)$ is a concave function of $p(x)$ for fixed $p(y|x)$ and a convex function of $p(y|x)$ for fixed $p(x)$.
