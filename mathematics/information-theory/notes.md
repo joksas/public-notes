@@ -113,7 +113,7 @@ The RHS of Equation \eqref{eq:convex-function-definition} represents the chord b
 
 If function $f$ has a non-negative second derivative over an interval, then it is convex over that interval.
 
-**Jensen's inequality** states that
+**Jensen's inequality** states that for convex function $f$ we have
 \begin{equation}
   E f(X) \geq f(EX)
 \end{equation}
