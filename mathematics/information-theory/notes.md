@@ -235,3 +235,50 @@ Also
   I(X; Y|Z) \leq I(X; Y)
 \end{equation}
 thus dependence of $X$ and $Y$ can only be decreased by the observation of a "downstream" variable $Z$.
+
+## 2.9
+
+Suppose we have a family of probability mass functions $\{f_\theta(x)\}$ indexed by $\theta$. Let $X$ be a sample from a distribution in this family. Let $T(X)$ be any statistic (function of the sample). Then $\theta \to X \to T(X)$ and so
+\begin{equation*}
+  I(\theta; T(X)) \leq I(\theta; X)
+\end{equation*}
+
+If equality holds, then no information is lost, i.e. there is nothing else we can deduce about $\theta$ from $X$ that $T(X)$ doesn't already tell us.
+
+We call such $T(X)$ **sufficient statistics**; formally, they are statistics for which $\theta \to T(X) \to X$, or equivalently
+\begin{equation}
+  I(\theta; X) = I(\theta; T(X))
+\end{equation}
+
+Following from the example [here](https://www.youtube.com/watch?v=5j4E2FRR384), suppose that we toss a coin multiple times, and each individual toss can be modelled using Bernoulli distribution:
+\begin{equation*}
+  X_i \sim \mathrm{Ber}(\theta) \quad \text{with PMF } f(X_i, \theta) = \theta^{X_i} (1 - \theta)^{1-X_i}, \text{ where } X_i \in \{0, 1\}
+\end{equation*}
+
+Given $N$ tosses, we would have
+\begin{align*}
+  \begin{split}
+    f_N(X, \theta) &= \prod_{i=1}^{N} \theta^{X_i} (1 - \theta)^{1-X_i} \\
+		   &= \theta^{\sum_{i=1}^N X_i} (1 - \theta)^{N - \sum_{i=1}^N X_i} \\
+		   &= \theta^{T(X)} (1 - \theta)^{N - T(X)}
+  \end{split}
+\end{align*}
+
+So, if we know $N$ in advance, $T(X) = \sum\limits_{i=1}^{N} X_i$ is a sufficient statistic. Nothing else from $X$, such as the order of 1's and 0's would provide additional information about $\theta$.
+
+An alternative way to prove this is alluded to in the textbook and provided in detail [here](https://www.youtube.com/watch?v=G5pLCoPXr9g). We can show that given $T(X)$, all sequences having that many 1's are equally likely and independent of $\theta$ (thus $X$ could not provide any additional insight into $\theta$ beyond what $T(X)$ could):
+\begin{align*}
+  \begin{split}
+    \Pr \left\{ X = x \middle| \sum\limits_{i=1}^{N} X_i = T \right\} &= \frac{\Pr \left\{ X = x, \sum\limits_{i=1}^{N} X_i = T \right\} }{\Pr \left\{ \sum\limits_{i=1}^{N} X_i = T \right\} } \\
+	&= \frac{\Pr \left\{ X = x \right\} }{\Pr \left\{ \sum\limits_{i=1}^{N} X_i = k \right\} } \\
+	&= \frac{\theta^{T} (1 - \theta)^{N - T}}{\binom{N}{T} \theta^{T} (1 - \theta)^{N - T}} \\
+	&= \frac{1}{\binom{N}{T}}
+  \end{split}
+\end{align*}
+
+$T(X)$ is a **minimal sufficient statistic** if it is a function of every other sufficient statistic $U(X)$, or equivalently
+\begin{equation}
+  \theta \to T(X) \to U(X) \to X
+\end{equation}
+
+We can say that minimal sufficient statistic maximally compresses the information about $\theta$ in the sample $X$. For example, for a normal distribution, a tuple $(m_o, m_s)$ containing the means of odd and even samples, respectively, is a sufficient statistic, but not a minimal sufficient statistic. Sample mean can be extracted from that tuple, but not the other way around.
