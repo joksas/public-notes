@@ -203,3 +203,35 @@ We can also show that **relative entropy** $D(p||q)$ **is convex**.
 By extension, because entropy $H(p)$ can be expressed as $\log |\mathcal{X}| - D(p||u)$, we deduce that **entropy** $H(p)$ **is a concave function**.
 
 Suppose that $(X, Y) \sim p(x, y) = p(y|x) p(x)$. Mutual information $I(X; Y)$ is a concave function of $p(x)$ for fixed $p(y|x)$ and a convex function of $p(y|x)$ for fixed $p(x)$.
+
+## 2.8
+
+$X$, $Y$, and $Z$ form a Markov chain $X \to Y \to Z$ if
+\begin{equation}
+  p(x, y, z) = p(z|y) p(y|x) p(x)
+\end{equation}
+
+Several important remarks:
+\begin{itemize}
+  \item $X \to Y \to Z$ if and only if there is conditional independence of $X$ and $Z$, given $Y$, i.e. $p( x, z | y ) = p(x|y) p(z|y)$.
+  \item $X \to Y \to Z$ implies $Z \to Y \to X$.
+  \item If $Z = f(Y)$, then $X \to Y \to Z$.
+\end{itemize}
+
+**Data processing inequality** states that if $X \to Y \to Z$, then
+\begin{equation}
+  I(X; Y) \geq I(X; Z)
+\end{equation}
+
+Similarly, one can show that
+\begin{equation}
+  I(Y; Z) \geq I(X; Z)
+\end{equation}
+
+Importantly, if $Z = g(Y)$, then $I(X; Y) \geq I(X; g(Y))$, thus functions of $Y$ cannot increase information about $X$.
+
+Also
+\begin{equation}
+  I(X; Y|Z) \leq I(X; Y)
+\end{equation}
+thus dependence of $X$ and $Y$ can only be decreased by the observation of a "downstream" variable $Z$.
