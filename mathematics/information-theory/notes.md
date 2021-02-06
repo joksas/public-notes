@@ -156,7 +156,7 @@ We can show this by assuming that $u(x) = \frac{1}{|\mathcal{X}|}$ is uniform di
 Thus we get maximum entropy only when there is uniform distribution over the range $\mathcal{X}$.
 
 **Conditioning reduces entropy**:
-\begin{equation}
+\begin{equation} \label{eq:conditioning}
   H(X|Y) \leq H(X)
 \end{equation}
 
@@ -282,3 +282,49 @@ $T(X)$ is a **minimal sufficient statistic** if it is a function of every other 
 \end{equation}
 
 We can say that minimal sufficient statistic maximally compresses the information about $\theta$ in the sample $X$. For example, for a normal distribution, a tuple $(m_o, m_s)$ containing the means of odd and even samples, respectively, is a sufficient statistic, but not a minimal sufficient statistic. Sample mean can be extracted from that tuple, but not the other way around.
+
+## 2.10
+
+**Fano's ineqaulity** states that for any estimator $\hat{X}$ such that $X \to Y \to \hat{X}$, w have
+\begin{equation} \label{eq:fano-inequality}
+  H(P_e) + P_e \log |\mathcal{X}| \geq H(X | \hat{X})
+\end{equation}
+where $P_e \equiv \Pr(X \neq \hat{X})$.
+
+To prove this, we can introduce error random variable
+\begin{equation*}
+  E \equiv
+  \begin{cases}
+    0 &\text{if } \hat{X} = X \\
+    1 &\text{if } \hat{X} \neq X
+  \end{cases}
+\end{equation*}
+
+Then we expand $H(E, X| \hat{X})$ in two different ways:
+\begin{align*}
+  H(E, X| \hat{X}) &= H(X|\hat{X}) + H(E|X, \hat{X}) \\
+		   &= H(E|\hat{X}) + H(X|E, \hat{X})
+\end{align*}
+
+\begin{itemize}
+  \item $H(E|X, \hat{X}) = 0$ because $E$ is a function of just $X$ and $\hat{X}$.
+  \item $H(E|\hat{X}) \leq H(E) = H(P_e)$, as shown in Equation \eqref{eq:conditioning}.
+  \item $H(X|E, \hat{X}) = H(X|\hat{X}, E=0) \Pr(E=0) + H(X|\hat{X}, E=1) \Pr(E=1)$
+    \begin{itemize}
+      \item[$\ast$] $H(X|\hat{X}, E=0) \Pr(E=0) = 0(1 - P_e) = 0$ because if error is zero, then $\hat{X} = X$ and so $H(X|\hat{X}) = 0$
+      \item[$\ast$] $H(X|\hat{X}, E=1) \Pr(E=1) \leq \log |\mathcal{X}| P_e$ and 2) because $H(X)$ (and so $H(X|\hat{X})$) is upper bounded by $\log |\mathcal{X}|$.
+      \item[$\ast$] Therefore $H(X|E, \hat{X}) \leq P_e \log |\mathcal{X}|$.
+    \end{itemize}
+\end{itemize}
+
+Combining these results, we get Equation \eqref{eq:fano-inequality}.
+
+Because $X \to Y \to \hat{X}$, we have that $H(X|\hat{X}) \geq H(X|Y)$ and so
+\begin{equation}
+  H(P_e) + P_e \log |\mathcal{X}| \geq H(X | \hat{X}) \geq H(X|Y)
+\end{equation}
+
+We also have that if $X$ and $\hat{X}$ are independent and identically distributed, then
+\begin{equation}
+  \Pr(X = \hat{X}) \geq 2^{-H(X)}
+\end{equation}
