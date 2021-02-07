@@ -332,8 +332,38 @@ We also have that if $X$ and $\hat{X}$ are independent and identically distribut
 # Chapter 3
 
 If we have $X_1, X_2, \dots, X_n$ i.i.d.\ random variables, then not every sequence will be equally likely. However, for large $n$, the sequences that are *actually observed* are almost equally likely. Specifically, $p(X_1, X_2, \dots, X_n)$ is close to $2^{-nH}$ with high probability:
-\begin{equation}
+\begin{equation} \label{eq:p-of-typical-set}
   \Pr \left\{ p(X_1, X_2, \dots, X_n) = 2^{-n(H \pm \epsilon)} \right\} \approx 1
 \end{equation}
 
 This is another way of saying that if, for example, we have a binary variable, then the number of 1's is close to $np$ with high probability, and all such sequences have roughly the same probability.
+
+## 3.1
+
+Expression in Equation \eqref{eq:p-of-typical-set} comes from a theorem referred to as **asymptotic equipartition theory (AEP)**. If $X_1, X_2, \dots, X_n$ are i.i.d.\ $\sim p(x)$, then
+\begin{equation}
+  -\frac{1}{n} \log p(X_1, X_2, \dots, X_n) \to H(X)
+\end{equation}
+
+We can prove this using the weak law of large numbers:
+\begin{align}
+  \begin{split}
+    -\frac{1}{n} \log p(X_1, X_2, \dots, X_n) &= -\frac{1}{n} \log \prod_{i} p(X_i) \\
+	&= -\frac{1}{n} \sum_{i} \log p(X_i) \\
+	&\to -E \log p(X) \\
+	&= H(X)
+  \end{split}
+\end{align}
+
+**Typical set** $A_{\epsilon}^{(n)}$ w.r.t.\ $p(x)$ is the set of sequences $(x_1, x_2, \dots, x_n) \in \mathcal{X}^n$ with the property
+\begin{equation}
+  2^{-n(H(X) + \epsilon)} \leq p(x_1, x_2, \dots, x_n) \leq 2^{-n(H(X) - \epsilon)}
+\end{equation}
+
+It has the following properties:
+\begin{enumerate}
+  \item If $(x_1, x_2, \dots, x_n) \in A_{\epsilon}^{(n)}$, then $H(X) - \epsilon \leq -\frac{1}{n} p(x_1, x_2, \dots, x_n) \leq H(X) + \epsilon$.
+  \item $\Pr \big\{ A_{\epsilon}^{(n)} \big\} > 1 - \epsilon$ for sufficiently large $n$.
+  \item $\big| A_{\epsilon}^{(n)} \big| \leq 2^{n(H(X) + \epsilon)}$, where $|A|$ is the number of elements in $A$.
+  \item $\big| A_{\epsilon}^{(n)} \big| \geq (1 - \epsilon) 2^{n(H(X) - \epsilon)}$ for sufficiently large $n$.
+\end{enumerate}
