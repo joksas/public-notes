@@ -328,3 +328,12 @@ We also have that if $X$ and $\hat{X}$ are independent and identically distribut
 \begin{equation}
   \Pr(X = \hat{X}) \geq 2^{-H(X)}
 \end{equation}
+
+# Chapter 3
+
+If we have $X_1, X_2, \dots, X_n$ i.i.d.\ random variables, then not every sequence will be equally likely. However, for large $n$, the sequences that are *actually observed* are almost equally likely. Specifically, $p(X_1, X_2, \dots, X_n)$ is close to $2^{-nH}$ with high probability:
+\begin{equation}
+  \Pr \left\{ p(X_1, X_2, \dots, X_n) = 2^{-n(H \pm \epsilon)} \right\} \approx 1
+\end{equation}
+
+This is another way of saying that if, for example, we have a binary variable, then the number of 1's is close to $np$ with high probability, and all such sequences have roughly the same probability.
