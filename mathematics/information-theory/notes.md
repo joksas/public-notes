@@ -367,3 +367,37 @@ It has the following properties:
   \item $\big| A_{\epsilon}^{(n)} \big| \leq 2^{n(H(X) + \epsilon)}$, where $|A|$ is the number of elements in $A$.
   \item $\big| A_{\epsilon}^{(n)} \big| \geq (1 - \epsilon) 2^{n(H(X) - \epsilon)}$ for sufficiently large $n$.
 \end{enumerate}
+
+## 3.2
+
+Sequences in typical set $A_{\epsilon}^{(n)}$ may be represented using $n(H + \epsilon) + 1$ bits (extra bit needed because $n(H + \epsilon)$ may not be an integer). We prefix all such sequences with a "0", thus making the total length $n(H + \epsilon) + 2$ bits.
+
+Sequences in non-typical set $A_{\epsilon}^{(n)c}$ may be represented using $n \log |\mathcal{X}| + 1$ bits, and we may prepend them with a "1", thus making the total length $n \log |\mathcal{X}| + 2$ bits.
+
+\begin{enumerate}
+  \item This code is one-to-one and easily decodable.
+  \item Although we used brute-force enumeration for $A_{\epsilon}^{(n)c}$, it still yields efficient description.
+  \item Typical sequences have short descriptions of length $\sim nH$.
+\end{enumerate}
+
+Let $l(x^n)$ be the length of the codeword corresponding to $x^n$ denoting sequence $x_1, x_2, \dots, x_n$. If $n$ is sufficiently large, $\Pr \big\{ A_{\epsilon}^{(n)} \big\} \geq 1 - \epsilon$ and the expected length of the codeword is
+\begin{align}
+  \begin{split}
+    E(l(X^n)) &= \sum_{x^n} p(x^n) l(x^n) \\
+	      &= \sum_{x^n \in A_{\epsilon}^{(n)}} p(x^n) l(x^n) + \sum_{x^n \in A_{\epsilon}^{(n)c}} p(x^n) l(x^n) \\
+	      &\leq \sum_{x^n \in A_{\epsilon}^{(n)}} p(x^n) (n(H + \epsilon) + 2) + \sum_{x^n \in A_{\epsilon}^{(n)c}} p(x^n) (n \log |\mathcal{X}| + 2) \\
+	      &= \Pr \big\{ A_{\epsilon}^{(n)} \big\} (n(H + \epsilon) + 2) + \Pr \big\{ A_{\epsilon}^{(n)c} \big\} (n \log |\mathcal{X}| + 2) \\
+	      &\leq (1 - \epsilon) (n(H + \epsilon) + 2) + \epsilon (n \log |\mathcal{X}| + 2) \\
+	      &= n(H + \epsilon) + \epsilon n \log |\mathcal{X}| + 2 - \epsilon n (H + \epsilon) \\
+	      &\leq n(H + \epsilon) + \epsilon n \log |\mathcal{X}| + 2 \\
+	      &= n(H + \epsilon')
+  \end{split}
+\end{align}
+where $\epsilon' \equiv \epsilon + \epsilon \log |\mathcal{X}| + \frac{2}{n}$ can be made arbitrarily small by an appropriate choice of $\epsilon$ followed by an appropriate choice of $n$.
+
+Therefore, for sufficiently large $n$, we have
+\begin{equation}
+  E \left[ \frac{1}{n} l(X^n) \right] \leq H(X) + \epsilon
+\end{equation}
+
+Thus, on average, sequences $X^n$ can be represented using $n H(X)$ bits.
