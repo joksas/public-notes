@@ -387,8 +387,8 @@ Let $l(x^n)$ be the length of the codeword corresponding to $x^n$ denoting seque
 	      &= \sum_{x^n \in A_{\epsilon}^{(n)}} p(x^n) l(x^n) + \sum_{x^n \in A_{\epsilon}^{(n)c}} p(x^n) l(x^n) \\
 	      &\leq \sum_{x^n \in A_{\epsilon}^{(n)}} p(x^n) (n(H + \epsilon) + 2) + \sum_{x^n \in A_{\epsilon}^{(n)c}} p(x^n) (n \log |\mathcal{X}| + 2) \\
 	      &= \Pr \big\{ A_{\epsilon}^{(n)} \big\} (n(H + \epsilon) + 2) + \Pr \big\{ A_{\epsilon}^{(n)c} \big\} (n \log |\mathcal{X}| + 2) \\
-	      &\leq (1 - \epsilon) (n(H + \epsilon) + 2) + \epsilon (n \log |\mathcal{X}| + 2) \\
-	      &= n(H + \epsilon) + \epsilon n \log |\mathcal{X}| + 2 - \epsilon n (H + \epsilon) \\
+	      &\leq 1 (n(H + \epsilon) + 2) + \epsilon (n \log |\mathcal{X}| + 2) \\
+	      &= n(H + \epsilon) + 2 + \epsilon n \log |\mathcal{X}| + 2 \epsilon \\
 	      &\leq n(H + \epsilon) + \epsilon n \log |\mathcal{X}| + 2 \\
 	      &= n(H + \epsilon')
   \end{split}
