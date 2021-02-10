@@ -1,8 +1,12 @@
 ---
-title: "Information Theory"
+title: "Elements of Information Theory"
+subtitle: "Second Edition"
+author:
+  - Thomas M. Cover
+  - Joy A. Thomas
+abstract: |
+  These are my notes for the second edition of "Elements of Information Theory". I wrote down theorems and proofs which seemed the most relevant to me. However, not all explanations and proofs are from this textbook. This document consists of a mix of Markdown and \LaTeX; to convert to PDf, use [pandoc](https://pandoc.org/). 
 ---
-
-These are my notes for information theory based mostly on the textbook "Elements of Information Theory" by Thomas M. Cover and Joy A. Thomas.
 
 # Chapter 2
 
