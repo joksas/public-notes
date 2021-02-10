@@ -401,3 +401,28 @@ Therefore, for sufficiently large $n$, we have
 \end{equation}
 
 Thus, on average, sequences $X^n$ can be represented using $n H(X)$ bits.
+
+## 3.3
+
+Let $B_{\delta}^{(n)} \in \mathcal{X}^n$ be the smallest set with
+\begin{equation}
+  \Pr \big\{ B_{\delta}^{(n)} \big\} \geq 1 - \delta
+\end{equation}
+
+It can be proven that when $X_1, X_2, \dots, X_n$ is i.i.d.\ $\sim p(x)$, then for $\delta < \frac{1}{2}$ and any $\delta' > 0$, we have
+\begin{equation} \label{eq:high-probability-set}
+  \frac{1}{n} \log \big| B_{\delta}^{(n)} \big| > H - \delta' \quad \text{for sufficiently large $n$}
+\end{equation}
+
+This essentially says that $B_{\delta}^{(n)}$ must have at least $2^{nH}$ elements, to first order in the exponent. Because $A_{\epsilon}^{(n)}$ has $2^{n(H \pm \epsilon)}$, *the typical set is about the same size as the smallest high-probability set*.
+
+We will introduce new notation:
+\begin{equation}
+  a_n \doteq b_n \Leftrightarrow \lim_{n \to \infty} \frac{1}{n} \log \frac{a_n}{b_n} = 0
+\end{equation}
+This implies that $a_n$ and $b_n$ are equal to the first order in the exponent.
+
+Equation \eqref{eq:high-probability-set} can now be restated by saying that if $\delta_n \to 0$ and $\epsilon_n \to 0$, then
+\begin{equation}
+  \big| B_{\delta_n}^{(n)} \big| \doteq \big| A_{\epsilon_n}^{(n)} \big| \doteq 2^{nH}
+\end{equation}
