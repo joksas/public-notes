@@ -426,3 +426,45 @@ Equation \eqref{eq:high-probability-set} can now be restated by saying that if $
 \begin{equation}
   \big| B_{\delta_n}^{(n)} \big| \doteq \big| A_{\epsilon_n}^{(n)} \big| \doteq 2^{nH}
 \end{equation}
+
+## Problems
+
+### 3.1
+
+\begin{enumerate}[(a)]
+  \item
+    \begin{align}
+      \begin{split}
+	EX &= \Pr \{ X \geq t \} E(X|X \geq t) + \Pr \{ X < t \} E(X|X < t) \\
+	   &\geq \Pr \{ X \geq t \} E(X|X \geq t) \\
+	   &\geq \Pr \{ X \geq t \} t 
+      \end{split}
+    \end{align}
+
+    Thus
+    \begin{equation} \label{eq:P-3-1-a}
+      \Pr \{ X \geq t \} \leq \frac{EX}{t}
+    \end{equation}
+  \item
+    \begin{align}
+      \begin{split}
+	\Pr \{ (Y - \mu)^2 > \epsilon^2 \} &\leq \Pr \{ (Y - \mu)^2 \geq \epsilon^2 \} \\
+					   &\leq \frac{E(Y - \mu)^2}{\epsilon^2} \quad \text{from Equation \eqref{eq:P-3-1-a}} \\
+					   &= \frac{\sigma^2}{\epsilon^2} \quad \text{from variance properties}
+      \end{split}
+    \end{align}
+
+    Noticing that $\Pr \{ (Y - \mu)^2 > \epsilon^2 \} = \Pr \{ |Y - \mu| > \epsilon \}$ for $\epsilon > 0$:
+    \begin{equation} \label{eq:P-3-1-b}
+      \Pr \{ |Y - \mu| > \epsilon \} \leq \frac{\sigma^2}{\epsilon^2}
+    \end{equation}
+  \item If we let $Y = \bar{Z}_n \equiv \dfrac{1}{n} \sum\limits_{i=1}^{n} Z_i$, and notice that $E \bar{Z}_n = EZ = \mu$ and $\mathrm{Var}(\bar{Z}_n) = \dfrac{\mathrm{Var}(Z)}{n} = \dfrac{\sigma^2}{n}$, then
+    \begin{equation}
+      \Pr \{ | \bar{Z}_n - \mu | > \epsilon \} \leq \frac{\sigma^2}{n \epsilon^2}
+    \end{equation}
+    
+    This proves the weak law of large number because
+    \begin{equation}
+      \lim_{n \to \infty} \Pr \{ | \bar{Z}_n - \mu | > \epsilon \} = 0
+    \end{equation}
+\end{enumerate}
