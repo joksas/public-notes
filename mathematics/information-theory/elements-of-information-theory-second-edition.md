@@ -13,7 +13,7 @@ These are my notes for information theory based mostly on the textbook "Elements
   H(x) \equiv - \sum_{x \in \mathcal{X}} p(x) \log p(x)
 \end{equation}
 
-**Expectation** of a random variable $X$ is
+**Expectation** of a random variable $g(X)$ is
 \begin{equation}
   E_p g(X) \equiv \sum_{x \in \mathcal{X}} g(x) p(x)
 \end{equation}
