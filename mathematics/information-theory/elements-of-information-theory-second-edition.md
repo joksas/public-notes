@@ -472,3 +472,57 @@ Equation \eqref{eq:high-probability-set} can now be restated by saying that if $
       \lim_{n \to \infty} \Pr \{ | \bar{Z}_n - \mu | > \epsilon \} = 0
     \end{equation}
 \end{enumerate}
+
+# Chapter 4
+
+## 4.1
+
+Stochastic process is said to be **stationary** if the joint distribution is invariant w.r.t.\ shifts in time:
+\begin{equation}
+  \Pr \{ X_1 = x_1, X_2 = x_2, \dots, X_n = x_n \} = \Pr \{ X_{1+l} = x_1, X_{2+l} = x_2, \dots, X_{n+l} = x_n \}
+\end{equation}
+for every $n$ and $l$.
+
+Discrete stochastic process is a **Markov chain** if
+\begin{equation}
+  \Pr \{ X_{n+1} = x_{n+1} | X_n = x_n, X_{n-1} = x_{n-1}, \dots, X_1 = x_1 \} = \Pr \{ X_{n+1} = x_{n+1} | X_n = x_n \}
+\end{equation}
+
+Markov chain is **time invariant** if $p(x_{n+1} | x_n)$ does not depend on $n$.
+
+A time-invariant Markov chain is described by its initial state and a **probability transition matrix** $P = [P_{ij}]$ with $i, j \in \{1, 2, \dots, m\}$ where $P_{ij} = \Pr \{ X_{n+1} = j | X_n = i \}$.
+
+Markov chain is:
+
+* **irreducible** if it is possible to go with positive probability from any state to any other state in a finite number of steps
+* **aperiodic** if the largest common factor of the lengths of different paths from a state to itself is $1$
+
+### Example 4.1.1
+
+Suppose we have a Markov chain with probability transition matrix
+\begin{equation*}
+  P =
+  \begin{bmatrix}
+    1-\alpha & \alpha \\
+    \beta & 1-\beta
+  \end{bmatrix}
+\end{equation*}
+
+Let
+\begin{equation*}
+  \mu =
+  \begin{bmatrix}
+    \mu_1 & \mu_2
+  \end{bmatrix}
+\end{equation*}
+be a vector representing stationary probabilities of states $1$ and $2$.
+
+In each transition, we should still have $\mu P = \mu$, thus we can derive that $\mu_1 \alpha = \mu_2 \beta$. We should also have $\mu_1 + \mu_2 = 1$. Therefore, by solving the two simultaneous equations, we find
+\begin{equation*}
+  \mu_1 = \frac{\beta}{\alpha + \beta} \quad \text{and} \quad \mu_2 = \frac{\alpha}{\alpha + \beta}
+\end{equation*}
+
+If the Markov chain has an initial state drawn from stationary distribution, the process itself will be stationary. The entropy at time $n$ will be
+\begin{equation*}
+  H(X_n) = H \left( \frac{\beta}{\alpha + \beta}, \frac{\alpha}{\alpha + \beta} \right)
+\end{equation*}
