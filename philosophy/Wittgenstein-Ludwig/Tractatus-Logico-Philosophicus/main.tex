@@ -1,0 +1,55 @@
+\documentclass{article}
+
+\usepackage[a4paper,left=20mm, right=20mm, top=20mm, bottom=20mm]{geometry}
+\usepackage[onehalfspacing]{setspace}
+\usepackage[backend=bibtex, style=nature, sorting=none, doi=true, bibencoding=utf8, minbibnames=4, maxbibnames=4]{biblatex}
+
+\setlength{\parindent}{0em}
+\setlength{\parskip}{1em}
+
+\addbibresource{~/.latex-bibliography/miscellaneous.bib}
+
+\newcommand{\prop}[1]{(#1)}
+
+\begin{document}
+
+\section*{\prop{1}}
+
+Proposition~\prop{1} says ``The world is everything that is the case.''
+
+Proposition~\prop{1.1} says ``The world is the totality of facts, not of things.''
+
+The concept of logical space is introduced in Preposition~\prop{1.13}. This is a space of combinations of objects that are logically possible (though not necessarily true), e.g.\ ``Toronto is the capital of Canada'' is in the logical space, while ``love is purple'' is not \cite{Vi2019}.
+
+Wittgenstein also mentions the independence of facts from one another in Proposition~\prop{1.21}: ``Any one [fact] can be either the case or not be the case, and everything else remain the same.''
+
+\section*{\prop{2}}
+
+Proposition~\prop{2} introduces the idea of facts and atomic facts: ``What is the case, the fact, is the existence of atomic facts.''
+That is, fact consists of atomic facts.
+
+Proposition~\prop{2.01} states that ``an atomic fact is a combination of objects (entities, things)''.
+So while Bertrand Russell states that every fact contains at least one universal\footnote{property that can be shared by more than one object, e.g.\ color}, Wittgenstein makes no distinction between universals and particulars \cite{Sp2007}.
+
+In Proposition~\prop{2.011}, Wittgenstein adds that ``it is essential to a thing that it can be a constituent part of an atomic fact''.
+
+Examples in Proposition~\prop{2.0131} suggest that although objects need not be part of any particular atomic fact, it must be part of \emph{some} atomic fact \cite{Sp}.
+``A speck in a visual field need not be red, but it must have a colour; it has, so to speak, a color space round it.
+A tone must have \emph{a} pitch, the object of the sense of touch \emph{a} hardness, etc.''
+
+Proposition~\prop{2.02} states that ``the object is simple''.
+Proposition~\prop{2.021} expands on what it means for an object to be simple: ``Objects form the substance of the world. Therefore they cannot be compound.''
+This seems to prevent concepts like tables and chairs to be objects \cite{Vi2019}.
+It is thus not very clear if such objects even exist.
+
+Wittgenstein's argument for the existence of things seems to rely on Propositions~\prop{2.0211} and \prop{2.0212} \cite{Sp2007}: ``If the world had no substance\footnote{[something that is formed of objects according to Proposition~\prop{2.021}]}, then whether a proposition had sense would depend on whether another proposition was true.''\ and ``It would then be impossible to form a picture of the world (true or false).''
+The argument is that without the existence of objects we could not represent the world, and so because we can represent it, it means that objects exist \cite{Sp2007}.
+But why are simple entities (objects) necessary for representation?
+
+There exist conflicting interpretations of Propositions~\prop{2.021}--\prop{2.0212} and whether they contain the proof for the claims of the existence of things and them being a requirement for representation \cite{Lu1976, Gr1964, We1935, An1959, Pi1964}. 
+\cite{Lu1976} claims that philosophers often overlook the fact that \prop{2.0211}, \prop{2.0212} do not mention objects at all, and that the concepts of `objects' and `substance' are incorrectly treated as synonymous.
+\cite{Sp2007} explores this argument using \prop{3.203} and \prop{4.024}.
+
+\printbibliography[title=References]
+
+\end{document}
