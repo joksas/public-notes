@@ -53,3 +53,8 @@ Another important aspect to salability is medium's acceptance by others.
 The more people use a monetary good, the more liquid it is, making it easier to exchange it without loss.
 When it comes to computing protocols, for example, a few dominant tends to emerge.
 IMAP, POP3, and SMTP have many flaws but they have become what is being used for emails.
+
+Another consequence of having wide acceptance of a medium of exchange is the ability to express all prices in terms of it.
+This function is referred to as **unit of account**.
+This allows to measure the value that producers create and how much do consumers have to pay for the goods.
+With easy money whose quantity can easily change, it is difficult to accurately reflect the opportunity costs associated with the goods.
