@@ -58,3 +58,14 @@ Another consequence of having wide acceptance of a medium of exchange is the abi
 This function is referred to as **unit of account**.
 This allows to measure the value that producers create and how much do consumers have to pay for the goods.
 With easy money whose quantity can easily change, it is difficult to accurately reflect the opportunity costs associated with the goods.
+
+# Chapter 3: Monetary Metals
+
+Gold has very high annual stock-to-flow ratio (about 70).
+Silver's ratio, on the other hand, is only around 5: silver is easier to refine and is also consumed in industrial processes, unlike gold.
+This makes it possible for silver bubbles to exist.
+
+Britain was the first to adopt the gold standard (under the direction of Isaac Newton).
+With the development of telegraph and railways in the 19th century, it made even more sense to use bills and checks, and back them using gold, while abandoning silver.
+Most nations followed Britain, with Hong Kong and China being the last ones in the 1930s.
+Ammous hypothesizes that it took China and India (which adopted gold standard only in the late 19th century) so long to catch up to the West in the 20th century only because they were so late to the party.
