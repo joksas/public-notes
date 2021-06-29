@@ -69,3 +69,9 @@ Britain was the first to adopt the gold standard (under the direction of Isaac N
 With the development of telegraph and railways in the 19th century, it made even more sense to use bills and checks, and back them using gold, while abandoning silver.
 Most nations followed Britain, with Hong Kong and China being the last ones in the 1930s.
 Ammous hypothesizes that it took China and India (which adopted gold standard only in the late 19th century) so long to catch up to the West in the 20th century only because they were so late to the party.
+
+Despite gold standard's success, gold is cumbersome to store which meant that its reserves had to be centralized.
+This, according to Ammous, lead to the following flaws:
+
+* Governments and banks were always creating media of exchange beyond the quantity of gold in their reserves.
+* Many countries held not only gold, but also other currencies in their reserves.
