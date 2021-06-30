@@ -75,3 +75,15 @@ This, according to Ammous, lead to the following flaws:
 
 * Governments and banks were always creating media of exchange beyond the quantity of gold in their reserves.
 * Many countries held not only gold, but also other currencies in their reserves.
+
+# Chapter 4: Government Money
+
+Government money, or **fiat money**, has two important properties:
+
+* One cannot redeem fiat money in gold.
+* All fiat money could *originally* be redeemed in gold or silver. Government currencies are, to some extent, still backed by gold or other countries' currencies (which are themselves backed by gold).
+
+At the start of WW1, many European countries went off the gold standard, i.e.\ suspended gold convertability.
+During the war, the currencies of the major powers depreciated from 6.6\% in the UK to as much as 69\% in Austria.
+Therefore, after the war, the governments faced a dilemma: getting back to gold standard with a fair valuation of the currency would have enraged the citizens, while using old exchange rates would have encouraged citizens to sell gold outside the country where it is valued fairly. 
+Unsurprisingly, the major powers did not go back to the gold standard.
