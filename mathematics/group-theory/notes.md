@@ -14,6 +14,20 @@ Abelian or commutative group is a group where the underlying operation works in 
   \forall a, b \in G\colon a * b = b * a
 \end{equation}
 
+In additive groups, identity element is denoted by $0$, while in multiplicative groups it is denoted by $1$.
+
+## Subgroups
+
+Subgroup $H$ is a subset of group $G$ and is itself a group. It is denoted by
+\begin{equation}
+  H \leq G
+\end{equation}
+
+Any group $G$ is also a subgroup of itself. If $H$ is a subgroup of $G$ but not the same as $G$, it is called a proper subgroup. It is denoted by
+\begin{equation}
+  H < G
+\end{equation}
+
 ## Rings
 
 Ring is an abelian group whose (primary) operation $+$ is called addition, and which has a secondary binary operation $\cdot$ called multiplication which
