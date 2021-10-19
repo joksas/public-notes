@@ -5,7 +5,7 @@
 Group $G$ is a set with an operation $*$ which
 
 * is closed, i.e.\ $\forall a, b \in G\colon a * b \in G$
-* has an identity $i$, i.e.\ $\forall a \in G\colon i*a = a*i = a$
+* has an identity $e$, i.e.\ $\forall a \in G\colon i*a = a*i = a$
 * is associative, i.e. $\forall a, b, c \in G\colon a * (b * c)  = (a * b) * c$
 * every element $a$ has an inverse $a^{-1}$, i.e.\ $\forall a \in G\colon a * a^{-1} = a^{-1} * a = e$
 
@@ -15,6 +15,8 @@ Abelian or commutative group is a group where the underlying operation works in 
 \end{equation}
 
 In additive groups, identity element is denoted by $0$, while in multiplicative groups it is denoted by $1$.
+
+Order of a group is the number of elements in it.
 
 ## Subgroups
 
@@ -27,6 +29,29 @@ Any group $G$ is also a subgroup of itself. If $H$ is a subgroup of $G$ but not 
 \begin{equation}
   H < G
 \end{equation}
+
+## Cayley tables
+
+Features:
+
+* if identity is the first element in the row and column headers, the first row and column are just repeats of the headers
+* every column contains the identity (because every element in group has an inverse)
+* for abelian groups, the table is symmetric around the diagonal
+* no duplicate elements in rows or columns
+
+*Proof for last statement:*
+
+Assume there's a row $a$ with duplicate elements $z$ corresponding to two columns $x$ and $y$. Then
+\begin{align*}
+  a * x &= a * y \\
+  a^{-1} * (a * x) &= a^{-1} * (a * y) \\
+  (a^{-1} * a) * x &= (a^{-1} * a) * y \\
+  e * x &= e * y \\
+  x &= y
+\end{align*}
+But $x$ and $y$ are different---a contradiction. Thus, rows don't have duplicate elements. Analogous proof for showing no duplicate elements in columns.
+
+Using Cayley tables, we can show that there is one group of order 1, one group of order 2, one group of order 3, and 2 (distinct) groups of order 4.
 
 ## Cyclic groups
 
